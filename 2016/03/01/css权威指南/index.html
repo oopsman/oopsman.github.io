@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://oopsman.github.io/2016/03/01/css权威指南/index.html">
 <meta property="og:site_name" content="照见自在">
 <meta property="og:description" content="css权威指南">
-<meta property="og:updated_time" content="2016-03-01T04:36:00.845Z">
+<meta property="og:updated_time" content="2016-03-02T02:47:58.831Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css权威指南">
 <meta name="twitter:description" content="css权威指南">
@@ -98,18 +98,34 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>css权威指南<br><a id="more"></a></p>
+<p><strong><em>第二章 选择器</em></strong></p>
 <ul>
 <li>属性选择器(类和ID是特殊的属性选择器)</li>
 <li>与文档结构相关的选择器：后代选择器、子选择器(&gt;)、相邻兄弟选择器(+)</li>
 <li>超链接是有href属性的所有a元素</li>
-<li>动态伪类:focus、:hover、:active可以应用到任何元素，静态伪类只用于超链接：:link、:visited</li>
+<li>伪类选择器：动态伪类:focus、:hover、:active可以应用到任何元素；静态伪类只用于超链接：:link、:visited (UA使用假象的类)</li>
 <li>选择第一个子元素的伪类:first-child</li>
+<li>伪元素选择器：设置首字母样式、设置第一行样式、设置之前和之后元素的样式。(UA使用假象的元素)</li>
+</ul>
+<p>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————<br><strong><em>第三章 结构和重叠</em></strong></p>
+<ul>
+<li>选择器的特殊性算法，并将这个特殊性附加到规则中的各个声明。选择器的特殊性由选择器本身的组件确定</li>
+<li>重要声明总会胜出 (重要声明与正常声明)</li>
+<li>继承值完全没有特殊性 比用户代理的样式还低 (用户代理的超链接样式就会占上风，因为浏览器的样式表可能包含以下规则：a:link{color:blue;})</li>
+<li>链接的样式 L:lik  O:hover  V:visited  E:actived (原因后面的覆盖前面的)</li>
+<li>创作样式表 &gt; 读者样式表 &gt; 用户代理样式表</li>
+</ul>
+<p>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————<br><strong><em>第四章 值和单位</em></strong></p>
+<ul>
+<li>数字：整数和小数(可以有正负)；百分数：几乎总是相对于另一个值；</li>
+<li>相对长度单位之所以得名，是因为它们是根据与其他事物的关系来度量的。共有3种相对长度单位：em，ex，px。</li>
+<li>有时一个值需要用某个词来描述，这种词就称为关键字。如：none、underline等。</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://oopsman.github.io/2016/03/01/css权威指南/" data-id="cil8xcipf0000lglkgqszcnng" class="article-share-link">Share</a>
+      <a data-url="http://oopsman.github.io/2016/03/01/css权威指南/" data-id="cil97p0k800003glkf47f173i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
