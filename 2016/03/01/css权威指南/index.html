@@ -11,7 +11,7 @@
 <meta property="og:url" content="http://oopsman.github.io/2016/03/01/css权威指南/index.html">
 <meta property="og:site_name" content="照见自在">
 <meta property="og:description" content="css权威指南">
-<meta property="og:updated_time" content="2016-03-02T02:47:58.831Z">
+<meta property="og:updated_time" content="2016-03-08T12:52:03.801Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css权威指南">
 <meta name="twitter:description" content="css权威指南">
@@ -98,7 +98,12 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>css权威指南<br><a id="more"></a></p>
-<p><strong><em>第二章 选择器</em></strong></p>
+<p><strong>第一章 css与文档</strong></p>
+<ul>
+<li>行内非替换元素、行内替换元素(行内非替换元素会忽略width属性)</li>
+<li>在html中，块级元素不能嵌套在行内元素中，但在css中，对于通过display属性如何嵌套不存在任何限制</li>
+</ul>
+<p>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————<br><strong>第二章 选择器</strong></p>
 <ul>
 <li>属性选择器(类和ID是特殊的属性选择器)</li>
 <li>与文档结构相关的选择器：后代选择器、子选择器(&gt;)、相邻兄弟选择器(+)</li>
@@ -107,7 +112,7 @@
 <li>选择第一个子元素的伪类:first-child</li>
 <li>伪元素选择器：设置首字母样式、设置第一行样式、设置之前和之后元素的样式。(UA使用假象的元素)</li>
 </ul>
-<p>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————<br><strong><em>第三章 结构和重叠</em></strong></p>
+<p>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————<br><strong>第三章 结构和重叠</strong></p>
 <ul>
 <li>选择器的特殊性算法，并将这个特殊性附加到规则中的各个声明。选择器的特殊性由选择器本身的组件确定</li>
 <li>重要声明总会胜出 (重要声明与正常声明)</li>
@@ -115,17 +120,36 @@
 <li>链接的样式 L:lik  O:hover  V:visited  E:actived (原因后面的覆盖前面的)</li>
 <li>创作样式表 &gt; 读者样式表 &gt; 用户代理样式表</li>
 </ul>
-<p>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————<br><strong><em>第四章 值和单位</em></strong></p>
+<p><em>属性包括：值、初始值、应用于、继承性、百分数、计算值</em><br>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————<br><strong>第四章 值和单位</strong></p>
 <ul>
 <li>数字：整数和小数(可以有正负)；百分数：几乎总是相对于另一个值；</li>
-<li>相对长度单位之所以得名，是因为它们是根据与其他事物的关系来度量的。共有3种相对长度单位：em，ex，px。</li>
+<li>相对长度单位之所以得名，是因为它们是根据与其他事物的关系来度量的。共有3种相对长度单位：em，ex，px</li>
 <li>有时一个值需要用某个词来描述，这种词就称为关键字。如：none、underline等。</li>
+</ul>
+<p><strong>第五章 字体</strong><br>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————</p>
+<ul>
+<li>字体样式的所有这些方面都集中到一个属性，即：font</li>
+<li>font-size继承的是计算值而不是百分数。</li>
+<li>font中font-size和font-family值是必须的，而且顺序不能改变，不过所有其他值都是可选的</li>
+</ul>
+<p><strong>第六章 文本属性</strong><br>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————</p>
+<ul>
+<li>值：percentage | number | length | …</li>
+<li>文本是内容，而字体用于显示这个内容</li>
+<li>white-spacewhite-space 属性设置如何处理元素内的空白，影响：空白符、换行符、是否自动换行</li>
+</ul>
+<p><strong>第七章 基本视觉格式化</strong><br>—————————————————————————————————————————————————————————————————————————————————————————————————————————————————</p>
+<ul>
+<li>内容区的背景也会应用到内边距，外边距通常是透明的，从中可以看到父元素的背景</li>
+<li>包含块：每个元素都相对于其包含块摆放，可这么说，包含块就是一个元素的“布局上下文”</li>
+<li>auto：浏览器计算对应的值</li>
+<li>line-height小于font-size时，inline-level boxes会使用line-height作为自己的高度，此时content area会溢出inline-level boxes</li>
 </ul>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://oopsman.github.io/2016/03/01/css权威指南/" data-id="cil97p0k800003glkf47f173i" class="article-share-link">Share</a>
+      <a data-url="http://oopsman.github.io/2016/03/01/css权威指南/" data-id="cilpbd2670005oslku29aa65o" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
