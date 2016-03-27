@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="css," />
+  <meta name="keywords" content="markdown," />
 
 
 
@@ -57,22 +57,18 @@
 
 
 
-<meta name="description" content="第一章 css与文档
-行内非替换元素、行内替换元素(行内非替换元素会忽略width属性)
-在html中，块级元素不能嵌套在行内元素中，但在css中，对于通过display属性如何嵌套不存在任何限制">
+<meta name="description" content="学习markdown">
 <meta property="og:type" content="article">
-<meta property="og:title" content="css权威指南">
-<meta property="og:url" content="http://oopsman.github.io/2016/03/01/css权威指南/index.html">
+<meta property="og:title" content="markdown">
+<meta property="og:url" content="http://oopsman.github.io/2016/02/29/hello/index.html">
 <meta property="og:site_name" content="照见自在">
-<meta property="og:description" content="第一章 css与文档
-行内非替换元素、行内替换元素(行内非替换元素会忽略width属性)
-在html中，块级元素不能嵌套在行内元素中，但在css中，对于通过display属性如何嵌套不存在任何限制">
-<meta property="og:updated_time" content="2016-03-14T07:06:22.325Z">
+<meta property="og:description" content="学习markdown">
+<meta property="og:image" content="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png">
+<meta property="og:updated_time" content="2016-03-13T03:26:58.309Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="css权威指南">
-<meta name="twitter:description" content="第一章 css与文档
-行内非替换元素、行内替换元素(行内非替换元素会忽略width属性)
-在html中，块级元素不能嵌套在行内元素中，但在css中，对于通过display属性如何嵌套不存在任何限制">
+<meta name="twitter:title" content="markdown">
+<meta name="twitter:description" content="学习markdown">
+<meta name="twitter:image" content="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png">
 
 
 
@@ -90,7 +86,7 @@
   };
 </script>
 
-  <title> css权威指南 | 照见自在 </title>
+  <title> markdown | 照见自在 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -210,7 +206,7 @@
             
             
               
-                css权威指南
+                markdown
               
             
           </h1>
@@ -222,8 +218,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-01T12:34:37+08:00" content="2016-03-01">
-              2016-03-01
+            <time itemprop="dateCreated" datetime="2016-02-29T22:37:23+08:00" content="2016-02-29">
+              2016-02-29
             </time>
           </span>
 
@@ -236,8 +232,8 @@
               <span class="post-meta-item-text">分类于</span>
               
                 <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/css/" itemprop="url" rel="index">
-                    <span itemprop="name">css</span>
+                  <a href="/categories/markdown/" itemprop="url" rel="index">
+                    <span itemprop="name">markdown</span>
                   </a>
                 </span>
 
@@ -268,53 +264,22 @@
       
 
       
-        <h3 id="第一章-css与文档"><a href="#第一章-css与文档" class="headerlink" title="第一章 css与文档"></a>第一章 css与文档</h3><ul>
-<li>行内非替换元素、行内替换元素(行内非替换元素会忽略width属性)</li>
-<li>在html中，块级元素不能嵌套在行内元素中，但在css中，对于通过display属性如何嵌套不存在任何限制</li>
-</ul>
-<a id="more"></a>
-<p>———————————————————————————————————————————————————————————</p>
-<h3 id="第二章-选择器"><a href="#第二章-选择器" class="headerlink" title="第二章 选择器"></a>第二章 选择器</h3><ul>
-<li>属性选择器(类和ID是特殊的属性选择器)</li>
-<li>与文档结构相关的选择器：后代选择器、子选择器(&gt;)、相邻兄弟选择器(+)</li>
-<li>超链接是有href属性的所有a元素</li>
-<li>伪类选择器：动态伪类:focus、:hover、:active可以应用到任何元素；静态伪类只用于超链接：:link、:visited (UA使用假象的类)</li>
-<li>选择第一个子元素的伪类:first-child</li>
-<li>伪元素选择器：设置首字母样式、设置第一行样式、设置之前和之后元素的样式。(UA使用假象的元素)</li>
-<li>伪元素和伪类之所以这么容易混淆，是因为他们的效果类似而且写法相仿，但实际上 css3 为了区分两者，已经明确规定了伪类用一个冒号来表示，而伪元素则用两个冒号来表示</li>
-<li>对于伪元素 :before 和 :after 而言，属性 content 是必须设置的<br>———————————————————————————————————————————————————————————<h3 id="第三章-结构和重叠"><a href="#第三章-结构和重叠" class="headerlink" title="第三章 结构和重叠"></a>第三章 结构和重叠</h3></li>
-<li>选择器的特殊性算法，并将这个特殊性附加到规则中的各个声明。选择器的特殊性由选择器本身的组件确定</li>
-<li>重要声明总会胜出 (重要声明与正常声明)</li>
-<li>继承值完全没有特殊性 比用户代理的样式还低 (用户代理的超链接样式就会占上风，因为浏览器的样式表可能包含以下规则：a:link{color:blue;})</li>
-<li>链接的样式 L:lik  O:hover  V:visited  E:actived (原因后面的覆盖前面的)</li>
-<li>创作样式表 &gt; 读者样式表 &gt; 用户代理样式表</li>
-</ul>
-<p><em>属性包括：值、初始值、应用于、继承性、百分数、计算值</em><br>———————————————————————————————————————————————————————————</p>
-<h3 id="第四章-值和单位"><a href="#第四章-值和单位" class="headerlink" title="第四章 值和单位"></a>第四章 值和单位</h3><ul>
-<li>数字：整数和小数(可以有正负)；百分数：几乎总是相对于另一个值；</li>
-<li>相对长度单位之所以得名，是因为它们是根据与其他事物的关系来度量的。共有3种相对长度单位：em，ex，px</li>
-<li>有时一个值需要用某个词来描述，这种词就称为关键字。如：none、underline等。</li>
-</ul>
-<h3 id="第五章-字体"><a href="#第五章-字体" class="headerlink" title="第五章 字体"></a>第五章 字体</h3><p>———————————————————————————————————————————————————————————</p>
+        <p>学习markdown<br><a id="more"></a></p>
+<p><strong>强调</strong> (**)<br>———————————-(---)</p>
+<blockquote>
+<p>引用 (>)</p>
+</blockquote>
 <ul>
-<li>字体样式的所有这些方面都集中到一个属性，即：font</li>
-<li>font-size继承的是计算值而不是百分数。</li>
-<li>font中font-size和font-family值是必须的，而且顺序不能改变，不过所有其他值都是可选的</li>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表</li>
+<li>无序列表</li>
 </ul>
-<h3 id="第六章-文本属性"><a href="#第六章-文本属性" class="headerlink" title="第六章 文本属性"></a>第六章 文本属性</h3><p>———————————————————————————————————————————————————————————</p>
-<ul>
-<li>值：percentage | number | length | …</li>
-<li>文本是内容，而字体用于显示这个内容</li>
-<li>white-spacewhite-space 属性设置如何处理元素内的空白，影响：空白符、换行符、是否自动换行</li>
-</ul>
-<h3 id="第七章-基本视觉格式化"><a href="#第七章-基本视觉格式化" class="headerlink" title="第七章 基本视觉格式化"></a>第七章 基本视觉格式化</h3><p>———————————————————————————————————————————————————————————</p>
-<ul>
-<li>内容区的背景也会应用到内边距，外边距通常是透明的，从中可以看到父元素的背景</li>
-<li>包含块：每个元素都相对于其包含块摆放，可这么说，包含块就是一个元素的“布局上下文”</li>
-<li>auto：浏览器计算对应的值</li>
-<li>line-height小于font-size时，inline-level boxes会使用line-height作为自己的高度，此时content area会溢出inline-level boxes</li>
-</ul>
-
+<p><a href="http://bruce-sha.github.io" title="不如的博客" target="_blank" rel="external">不如</a></p>
+<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
+<pre><code>val s = &quot;hello Markdown&quot;
+val s = &quot;hello Markdown&quot;
+</code></pre>
       
     </div>
 
@@ -328,7 +293,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/css/" rel="tag">#css</a>
+            <a href="/tags/markdown/" rel="tag">#markdown</a>
           
         </div>
       
@@ -337,16 +302,12 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/29/hello/" rel="next" title="markdown">
-                <i class="fa fa-chevron-left"></i> markdown
-              </a>
-            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/13/JS&CSS/" rel="prev" title="JS&CSS">
-                JS&CSS <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/01/css权威指南/" rel="prev" title="css权威指南">
+                css权威指南 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -465,7 +426,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#第一章-css与文档"><span class="nav-number">1.</span> <span class="nav-text">第一章 css与文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第二章-选择器"><span class="nav-number">2.</span> <span class="nav-text">第二章 选择器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-结构和重叠"><span class="nav-number">3.</span> <span class="nav-text">第三章 结构和重叠</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-值和单位"><span class="nav-number">4.</span> <span class="nav-text">第四章 值和单位</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-字体"><span class="nav-number">5.</span> <span class="nav-text">第五章 字体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六章-文本属性"><span class="nav-number">6.</span> <span class="nav-text">第六章 文本属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七章-基本视觉格式化"><span class="nav-number">7.</span> <span class="nav-text">第七章 基本视觉格式化</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
