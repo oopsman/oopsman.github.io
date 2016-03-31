@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="markdown," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -57,18 +57,16 @@
 
 
 
-<meta name="description" content="学习markdown">
+<meta name="description" content="Emmet的前身是大名鼎鼎的Zen coding，它使用仿CSS选择器的语法来生成代码，大大提高了HTML/CSS代码编写的速度。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markdown">
-<meta property="og:url" content="http://oopsman.github.io/2016/02/29/hello/index.html">
+<meta property="og:title" content="Emmet">
+<meta property="og:url" content="http://oopsman.github.io/2016/03/28/Emmet/index.html">
 <meta property="og:site_name" content="照见自在">
-<meta property="og:description" content="学习markdown">
-<meta property="og:image" content="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png">
-<meta property="og:updated_time" content="2016-03-13T03:26:58.309Z">
+<meta property="og:description" content="Emmet的前身是大名鼎鼎的Zen coding，它使用仿CSS选择器的语法来生成代码，大大提高了HTML/CSS代码编写的速度。">
+<meta property="og:updated_time" content="2016-03-30T04:11:16.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="markdown">
-<meta name="twitter:description" content="学习markdown">
-<meta name="twitter:image" content="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png">
+<meta name="twitter:title" content="Emmet">
+<meta name="twitter:description" content="Emmet的前身是大名鼎鼎的Zen coding，它使用仿CSS选择器的语法来生成代码，大大提高了HTML/CSS代码编写的速度。">
 
 
 
@@ -86,7 +84,7 @@
   };
 </script>
 
-  <title> markdown | 照见自在 </title>
+  <title> Emmet | 照见自在 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -206,7 +204,7 @@
             
             
               
-                markdown
+                Emmet
               
             
           </h1>
@@ -218,30 +216,11 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-29T22:37:23+08:00" content="2016-02-29">
-              2016-02-29
+            <time itemprop="dateCreated" datetime="2016-03-28T22:32:59+08:00" content="2016-03-28">
+              2016-03-28
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/markdown/" itemprop="url" rel="index">
-                    <span itemprop="name">markdown</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -264,21 +243,27 @@
       
 
       
-        <p>学习markdown<br><a id="more"></a></p>
-<p><strong>强调</strong> (**)<br>———————————-(---)</p>
-<blockquote>
-<p>引用 (>)</p>
-</blockquote>
-<ul>
-<li>无序列表</li>
-<li>无序列表</li>
-<li>无序列表</li>
-<li>无序列表</li>
-</ul>
-<p><a href="http://bruce-sha.github.io" title="不如的博客" target="_blank" rel="external">不如</a></p>
-<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
-<pre><code>val s = &quot;hello Markdown&quot;
-val s = &quot;hello Markdown&quot;
+        <p>Emmet的前身是大名鼎鼎的Zen coding，它使用仿CSS选择器的语法来生成代码，大大提高了HTML/CSS代码编写的速度。</p>
+<a id="more"></a>
+<h1 id="HTML的缩写"><a href="#HTML的缩写" class="headerlink" title="HTML的缩写"></a>HTML的缩写</h1><h2 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h2><p>“!”或“html:5”：初始化html5的文档格式；”html:4s”：初始化html4的严格文档格式。</p>
+<h2 id="下面来看看如何定义HTML元素的内容和属性"><a href="#下面来看看如何定义HTML元素的内容和属性" class="headerlink" title="下面来看看如何定义HTML元素的内容和属性"></a>下面来看看如何定义HTML元素的内容和属性</h2><p>你可以通过输入h1{foo}和a[href=#]，就可以自动生成如下代码：</p>
+<pre><code>&lt;h1&gt;foo&lt;/h1&gt;  
+&lt;a href=&quot;#&quot;&gt;&lt;/a&gt;
+</code></pre><h2 id="嵌套"><a href="#嵌套" class="headerlink" title="嵌套"></a>嵌套</h2><p>>：子元素符号，表示嵌套的元素；+：同级标签符号。</p>
+<p>##分组<br>你可以通过嵌套和括号来快速生成一些代码块，比如输入(.foo&gt;h1)+(.bar&gt;h2)：</p>
+<pre><code>&lt;div class=&quot;foo&quot;&gt;  
+&lt;h1&gt;&lt;/h1&gt;  
+&lt;/div&gt;  
+&lt;div class=&quot;bar&quot;&gt;  
+&lt;h2&gt;&lt;/h2&gt;  
+&lt;/div&gt;
+</code></pre><h2 id="隐式标签"><a href="#隐式标签" class="headerlink" title="隐式标签"></a>隐式标签</h2><p>在过去版本中，可以省略掉div，即输入.item即可生成：</p>
+<pre><code>&lt;div class=&quot;item&quot;&gt;&lt;/div&gt;
+</code></pre><h2 id="定义多个元素"><a href="#定义多个元素" class="headerlink" title="定义多个元素"></a>定义多个元素</h2><p>要定义多个元素，可以使用<em>符号。比如，ul&gt;li</em>3</p>
+<h2 id="定义多个带属性的元素"><a href="#定义多个带属性的元素" class="headerlink" title="定义多个带属性的元素"></a>定义多个带属性的元素</h2><p>如果输入 ul&gt;li.item$*3&gt;a{item $}</p>
+<h1 id="CSS的缩写"><a href="#CSS的缩写" class="headerlink" title="CSS的缩写"></a>CSS的缩写</h1><h2 id="值"><a href="#值" class="headerlink" title="值"></a>值</h2><p>比如要定义元素的宽度，只需输入w100，即可生成width: 100px; 除了px，也可以生成其他单位，比如输入h10p+m5e，结果如下：</p>
+<pre><code>height: 10%;
+margin: 5em;
 </code></pre>
       
     </div>
@@ -291,23 +276,21 @@ val s = &quot;hello Markdown&quot;
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/markdown/" rel="tag">#markdown</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/15/移动web/" rel="next" title="移动web">
+                <i class="fa fa-chevron-left"></i> 移动web
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/01/css权威指南/" rel="prev" title="css权威指南">
-                css权威指南 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/29/进阶Javascript/" rel="prev" title="进阶Javascript">
+                进阶Javascript <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -426,7 +409,7 @@ val s = &quot;hello Markdown&quot;
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML的缩写"><span class="nav-number">1.</span> <span class="nav-text">HTML的缩写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化"><span class="nav-number">1.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下面来看看如何定义HTML元素的内容和属性"><span class="nav-number">1.2.</span> <span class="nav-text">下面来看看如何定义HTML元素的内容和属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嵌套"><span class="nav-number">1.3.</span> <span class="nav-text">嵌套</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#隐式标签"><span class="nav-number">1.4.</span> <span class="nav-text">隐式标签</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义多个元素"><span class="nav-number">1.5.</span> <span class="nav-text">定义多个元素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#定义多个带属性的元素"><span class="nav-number">1.6.</span> <span class="nav-text">定义多个带属性的元素</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CSS的缩写"><span class="nav-number">2.</span> <span class="nav-text">CSS的缩写</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#值"><span class="nav-number">2.1.</span> <span class="nav-text">值</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

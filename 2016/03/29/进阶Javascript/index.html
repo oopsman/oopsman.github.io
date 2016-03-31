@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="markdown," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -57,18 +57,25 @@
 
 
 
-<meta name="description" content="学习markdown">
+<meta name="description" content="Javascript还提供了一个instanceof运算符，验证构造函数与实例对象之间的关系。
+为了配合prototype属性，Javascript定义了一些辅助方法，帮助我们使用它：
+isPrototypeOf()：这个方法用来判断，某个proptotype对象和某个实例之间的关系。
+hasOwnProperty()：用来判断某一个属性到底是本地属性，还是继承自prototype对象的属性。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markdown">
-<meta property="og:url" content="http://oopsman.github.io/2016/02/29/hello/index.html">
+<meta property="og:title" content="进阶Javascript">
+<meta property="og:url" content="http://oopsman.github.io/2016/03/29/进阶Javascript/index.html">
 <meta property="og:site_name" content="照见自在">
-<meta property="og:description" content="学习markdown">
-<meta property="og:image" content="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png">
-<meta property="og:updated_time" content="2016-03-13T03:26:58.309Z">
+<meta property="og:description" content="Javascript还提供了一个instanceof运算符，验证构造函数与实例对象之间的关系。
+为了配合prototype属性，Javascript定义了一些辅助方法，帮助我们使用它：
+isPrototypeOf()：这个方法用来判断，某个proptotype对象和某个实例之间的关系。
+hasOwnProperty()：用来判断某一个属性到底是本地属性，还是继承自prototype对象的属性。">
+<meta property="og:updated_time" content="2016-03-31T08:11:38.708Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="markdown">
-<meta name="twitter:description" content="学习markdown">
-<meta name="twitter:image" content="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png">
+<meta name="twitter:title" content="进阶Javascript">
+<meta name="twitter:description" content="Javascript还提供了一个instanceof运算符，验证构造函数与实例对象之间的关系。
+为了配合prototype属性，Javascript定义了一些辅助方法，帮助我们使用它：
+isPrototypeOf()：这个方法用来判断，某个proptotype对象和某个实例之间的关系。
+hasOwnProperty()：用来判断某一个属性到底是本地属性，还是继承自prototype对象的属性。">
 
 
 
@@ -86,7 +93,7 @@
   };
 </script>
 
-  <title> markdown | 照见自在 </title>
+  <title> 进阶Javascript | 照见自在 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -206,7 +213,7 @@
             
             
               
-                markdown
+                进阶Javascript
               
             
           </h1>
@@ -218,30 +225,11 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-29T22:37:23+08:00" content="2016-02-29">
-              2016-02-29
+            <time itemprop="dateCreated" datetime="2016-03-29T23:26:58+08:00" content="2016-03-29">
+              2016-03-29
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/markdown/" itemprop="url" rel="index">
-                    <span itemprop="name">markdown</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -264,22 +252,51 @@
       
 
       
-        <p>学习markdown<br><a id="more"></a></p>
-<p><strong>强调</strong> (**)<br>———————————-(---)</p>
-<blockquote>
-<p>引用 (>)</p>
-</blockquote>
-<ul>
-<li>无序列表</li>
-<li>无序列表</li>
-<li>无序列表</li>
-<li>无序列表</li>
+        <ul>
+<li>Javascript还提供了一个instanceof运算符，验证构造函数与实例对象之间的关系。</li>
+<li>为了配合prototype属性，Javascript定义了一些辅助方法，帮助我们使用它：<ul>
+<li>isPrototypeOf()：这个方法用来判断，某个proptotype对象和某个实例之间的关系。</li>
+<li>hasOwnProperty()：用来判断某一个属性到底是本地属性，还是继承自prototype对象的属性。</li>
+<li>in运算符：in运算符可以用来判断，某个实例是否含有某个属性，不管是不是本地属性。</li>
 </ul>
-<p><a href="http://bruce-sha.github.io" title="不如的博客" target="_blank" rel="external">不如</a></p>
-<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
-<pre><code>val s = &quot;hello Markdown&quot;
-val s = &quot;hello Markdown&quot;
-</code></pre>
+</li>
+<li>封装与继承的概念与在Javascript实现。<a id="more"></a>
+</li>
+</ul>
+<h2 id="RegExp"><a href="#RegExp" class="headerlink" title="RegExp"></a>RegExp</h2><ul>
+<li>主要两个方法exec()(捕获组、方向引用)、test()(测试返回布尔值);</li>
+<li>其静态属性有两种访问方式，即长属性名和段属性名。每次执行方法都会动态改变静态属性的值。</li>
+<li>String 类型定义了几个用于在字符串中匹配模式的方法。第一个方法就是match()，在字符串上调用这个方法，本质上与调用RegExp的exec()方法相同。返回一个数组。<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2></li>
+<li>函数的内部属性：arguments、this；</li>
+<li>函数的属性和方法：属性：length、prototype；方法：call、apply(非继承的方法来之function.prototype)；<h2 id="This"><a href="#This" class="headerlink" title="This"></a>This</h2></li>
+<li>直接函数调用 window</li>
+<li>当前调用的对象 xx.yy()</li>
+<li>new操作符指向新创建的区域</li>
+<li>在call/apply时，第一个参数相当于设置函数体内this的值(对象与方法解耦了)。<h2 id="原型链"><a href="#原型链" class="headerlink" title="原型链"></a>原型链</h2></li>
+<li>原型都是有Object对象创建的。</li>
+<li>原生对象和我们自定义对象一样，都存在原型，原生对象的方法都存在原型中，这样我们创建一个新的对象实例时，这些对象就会拥有这些方法。</li>
+<li>所有的实例对象都继承了创建它们的构造函数的原型对象。</li>
+<li>(实例对象会有<strong>proto</strong>属性)别去纠结有没有这么一个小小的<strong>proto</strong>属性，我们的思路就是要所有的实例对象能够使用它们的构造函数所指向的原型对象。这个属性是prototype，它是JavaScript标准的一部分。prototype对象默认都有一个constructor属性反向指向了以该prototype对象作为原型的构造函数。</li>
+<li>prototype对象只为构造函数创建出来的实例对象继承属性所用，构造函数自己却并不使用它（但既然该构造函数自己也是一个对象，那么它也会继承它的构造函数的原型，一般是javascript系统的Function对象）。</li>
+<li><p>默认的prototype对象可以被用户创建的对象替换掉。这样做的话，我们必须重复javascript运行时在幕后对默认的prototype对象所做的那样去手动设置constructor属性。  </p>
+<blockquote>
+<p>   function foo() { } ; var f1 = new foo();<br>   f1.constructor === foo.prototype.constructor === foo<br>   //replace the default prototype object<br>   foo.prototype = new Object();<br>   //now we have:<br>   f1.constructor === foo.prototype.constructor === Object<br>   //so now we say:<br>   foo.prototype.constructor = foo<br>   //all is well again<br>   f1.constructor === foo.prototype.constructor === foo  </p>
+</blockquote>
+</li>
+<li><p>每一个的prototype对象自己都是由Object()函数（默认情况下）创建而来，所以prototype有它自己的原型那就是Object.prototype。因此无论什么类型的实例最终都会继承Object.prototype对象的属性。</p>
+</li>
+<li>沿着上图中的箭头走，你会发现javascript语言核心中的一些有趣的东西:<ul>
+<li>Function.<strong>proto</strong>指向Function.prototype。这使得：Function.constructor === Function，也就是说：Function是它自己的构造函数！</li>
+<li>Object instanceof Object == true。这是因为：Object.<strong>proto</strong>.<strong>proto</strong>.constructor == Object。注意，跟Object instanceof Object不一样的是Foo instanceof Foo == false，这是因为：Foo并没有作为它原型链上的某个构造函数。</li>
+<li>Function.prototype.toString是一个内置的函数，它有别于另外一个内置的函数：Object.prototype.toString。</li>
+<li>Function instanceof Object  //true    Object instanceof Function  //true<h2 id="深拷贝与浅拷贝"><a href="#深拷贝与浅拷贝" class="headerlink" title="深拷贝与浅拷贝"></a>深拷贝与浅拷贝</h2>只是拷贝基本类型的数据，我们把这种拷贝叫做”浅拷贝”。所谓”深拷贝”，就是能够实现真正意义上的数组和对象的拷贝。它的实现并不难，只要递归调用就行了。<blockquote>
+<p>  function deepCopy(p, c) {<br>　　var c = c || {};<br>　　for (var i in p) {<br>　　　　if (typeof p[i] === ‘object’) {<br>　　　　　　c[i] = (p[i].constructor === Array) ? [] : {};<br>　　　　　　deepCopy(p[i], c[i]);<br>　　　　} else {<br>　　　　　　　c[i] = p[i];<br>　　　}<br>　　}<br>　　return c;<br>}</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+
       
     </div>
 
@@ -291,23 +308,21 @@ val s = &quot;hello Markdown&quot;
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/markdown/" rel="tag">#markdown</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/28/Emmet/" rel="next" title="Emmet">
+                <i class="fa fa-chevron-left"></i> Emmet
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/03/01/css权威指南/" rel="prev" title="css权威指南">
-                css权威指南 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/03/30/PS操作/" rel="prev" title="PS操作">
+                PS操作 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -426,7 +441,7 @@ val s = &quot;hello Markdown&quot;
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RegExp"><span class="nav-number">1.</span> <span class="nav-text">RegExp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Function"><span class="nav-number">2.</span> <span class="nav-text">Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#This"><span class="nav-number">3.</span> <span class="nav-text">This</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#原型链"><span class="nav-number">4.</span> <span class="nav-text">原型链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深拷贝与浅拷贝"><span class="nav-number">5.</span> <span class="nav-text">深拷贝与浅拷贝</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
