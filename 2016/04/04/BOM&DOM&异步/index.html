@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="markdown," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -57,18 +57,16 @@
 
 
 
-<meta name="description" content="学习markdown">
+<meta name="description" content="BOM&amp;amp;DOM">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markdown">
-<meta property="og:url" content="http://oopsman.github.io/2016/02/29/hello/index.html">
+<meta property="og:title" content="BOM&DOM">
+<meta property="og:url" content="http://oopsman.github.io/2016/04/04/BOM&DOM&异步/index.html">
 <meta property="og:site_name" content="照见自在">
-<meta property="og:description" content="学习markdown">
-<meta property="og:image" content="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png">
-<meta property="og:updated_time" content="2016-03-13T03:26:58.309Z">
+<meta property="og:description" content="BOM&amp;amp;DOM">
+<meta property="og:updated_time" content="2016-04-05T03:48:06.923Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="markdown">
-<meta name="twitter:description" content="学习markdown">
-<meta name="twitter:image" content="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png">
+<meta name="twitter:title" content="BOM&DOM">
+<meta name="twitter:description" content="BOM&amp;amp;DOM">
 
 
 
@@ -86,7 +84,7 @@
   };
 </script>
 
-  <title> markdown | 照见自在 </title>
+  <title> BOM&DOM | 照见自在 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -206,7 +204,7 @@
             
             
               
-                markdown
+                BOM&DOM
               
             
           </h1>
@@ -218,30 +216,11 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-29T22:37:23+08:00" content="2016-02-29">
-              2016-02-29
+            <time itemprop="dateCreated" datetime="2016-04-04T00:25:41+08:00" content="2016-04-04">
+              2016-04-04
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/markdown/" itemprop="url" rel="index">
-                    <span itemprop="name">markdown</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
@@ -264,22 +243,23 @@
       
 
       
-        <p>学习markdown<br><a id="more"></a></p>
-<p><strong>强调</strong> (**)<br>———————————-(---)</p>
-<blockquote>
-<p>引用 (>)</p>
-</blockquote>
-<ul>
-<li>无序列表</li>
-<li>无序列表</li>
-<li>无序列表</li>
-<li>无序列表</li>
+        <p>BOM&amp;DOM<br><a id="more"></a></p>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><ul>
+<li>没有所谓的标准BOM实现或者标准BOM接口，BOM提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。这些对象也以window对象为依托。</li>
+<li>top对象始终指向最外围的框架,也就是整个浏览器窗口。parent对象表示包含当前框架的框架,而self对象则回指window。</li>
+<li>使用location对象可以通过编程方式来访问浏览器的导航系统。设置相应的属性,可以逐段或整体性地修改浏览器的URL。每次修改location属性(hash除外)，页面都会以新URL重新加载。</li>
+<li>当页面的URL改变时，就会生成一条历史记录。在IE8及更高版本、Opera、Firefox、Safari 3及更高版本以及Chrome中，这里所说的改变包括URL中hash的变化 (因此，设置location.hash会在这些浏览器中生成一条新的历史记录)。<h2 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h2></li>
+<li></li>
+<li></li>
+<li><h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2></li>
+<li>JavaScript是单线程语言，但它允许通过timer来调度代码在特定的时刻执行。由于javaScript是单线程运行机制，无论同步和异步最终还是单线程的，<strong>异步只是把代码运行时间长的延迟了，被延迟的时间里去执行其他代码而已。</strong></li>
+<li>timer接受两个参数：要执行的代码和以毫秒表示的时间（即在执行代码前需要等待多少毫秒）。其中，第一个参数可以是一个包含JavaScript代码的字符串(就和在eval()函数中使用的字符串一样），也可以是一个函数。</li>
+<li>一般认为，使用超时调用来模拟间歇调用的是一种最佳模式。在开发环境下，很少使用真正的间歇调用，原因是后一个间歇调用可能会在前一个间歇调用结束之前启动。</li>
+<li>定时器对队列的工作方式是，当特定时间过去后将代码插入。设定一个150ms后执行的定时器不代表到了150ms代码就立刻执行，它表示代码会在150ms后被加入到队列中。</li>
+<li>浏览器的界面渲染线程与javascript引擎执行线程是互斥的。因为javascript脚本可以对Dom进行操作，如果一边脚本在操作的同时，界面渲染线程在工作，就会导致前后的数据不一致，javascript脚本操作的结果与界面看到的不一样。所以在javascript引擎运行时，浏览器的渲染线程会被挂起。</li>
+<li></li>
 </ul>
-<p><a href="http://bruce-sha.github.io" title="不如的博客" target="_blank" rel="external">不如</a></p>
-<p><img src="http://github.global.ssl.fastly.net/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Mark" title="GitHub Mark"></p>
-<pre><code>val s = &quot;hello Markdown&quot;
-val s = &quot;hello Markdown&quot;
-</code></pre>
+
       
     </div>
 
@@ -291,24 +271,18 @@ val s = &quot;hello Markdown&quot;
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/markdown/" rel="tag">#markdown</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/03/30/PS操作/" rel="next" title="PS操作">
+                <i class="fa fa-chevron-left"></i> PS操作
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/01/css权威指南/" rel="prev" title="css权威指南">
-                css权威指南 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -426,7 +400,7 @@ val s = &quot;hello Markdown&quot;
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#BOM"><span class="nav-number">1.</span> <span class="nav-text">BOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DOM"><span class="nav-number">2.</span> <span class="nav-text">DOM</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#异步"><span class="nav-number">3.</span> <span class="nav-text">异步</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
