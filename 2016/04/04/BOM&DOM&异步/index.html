@@ -57,16 +57,16 @@
 
 
 
-<meta name="description" content="BOM&amp;amp;DOM">
+<meta name="description" content="BOM&amp;amp;DOM&amp;amp;异步">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BOM&DOM">
+<meta property="og:title" content="BOM&DOM&异步">
 <meta property="og:url" content="http://oopsman.github.io/2016/04/04/BOM&DOM&异步/index.html">
 <meta property="og:site_name" content="照见自在">
-<meta property="og:description" content="BOM&amp;amp;DOM">
-<meta property="og:updated_time" content="2016-04-05T03:48:06.923Z">
+<meta property="og:description" content="BOM&amp;amp;DOM&amp;amp;异步">
+<meta property="og:updated_time" content="2016-04-06T04:06:58.315Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BOM&DOM">
-<meta name="twitter:description" content="BOM&amp;amp;DOM">
+<meta name="twitter:title" content="BOM&DOM&异步">
+<meta name="twitter:description" content="BOM&amp;amp;DOM&amp;amp;异步">
 
 
 
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title> BOM&DOM | 照见自在 </title>
+  <title> BOM&DOM&异步 | 照见自在 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -204,7 +204,7 @@
             
             
               
-                BOM&DOM
+                BOM&DOM&异步
               
             
           </h1>
@@ -243,8 +243,9 @@
       
 
       
-        <p>BOM&amp;DOM<br><a id="more"></a></p>
-<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2><ul>
+        <ul>
+<li>BOM&amp;DOM&amp;异步<a id="more"></a>
+<h2 id="BOM"><a href="#BOM" class="headerlink" title="BOM"></a>BOM</h2></li>
 <li>没有所谓的标准BOM实现或者标准BOM接口，BOM提供了很多对象，用于访问浏览器的功能，这些功能与任何网页内容无关。这些对象也以window对象为依托。</li>
 <li>top对象始终指向最外围的框架,也就是整个浏览器窗口。parent对象表示包含当前框架的框架,而self对象则回指window。</li>
 <li>使用location对象可以通过编程方式来访问浏览器的导航系统。设置相应的属性,可以逐段或整体性地修改浏览器的URL。每次修改location属性(hash除外)，页面都会以新URL重新加载。</li>
@@ -252,11 +253,17 @@
 <li></li>
 <li></li>
 <li><h2 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h2></li>
+<li>JavaScript语言对异步编程的实现，就是回调函数。</li>
+<li>按照惯例，外部JavaScript文件带有.js扩展名。但这个扩展名不是必需的，因为浏览器不会检查包含JavaScript的文件的扩展名。这样一来，使用JSP、PHP或其他服务器端语言动态生成JavaScript代码也就成为了可能。但是，服务器通常还是需要看扩展名决定为响应应用哪种MIME类型。如果不使用.js扩展名，请确保服务器能返回正确的MIME类型。</li>
 <li>JavaScript是单线程语言，但它允许通过timer来调度代码在特定的时刻执行。由于javaScript是单线程运行机制，无论同步和异步最终还是单线程的，<strong>异步只是把代码运行时间长的延迟了，被延迟的时间里去执行其他代码而已。</strong></li>
 <li>timer接受两个参数：要执行的代码和以毫秒表示的时间（即在执行代码前需要等待多少毫秒）。其中，第一个参数可以是一个包含JavaScript代码的字符串(就和在eval()函数中使用的字符串一样），也可以是一个函数。</li>
 <li>一般认为，使用超时调用来模拟间歇调用的是一种最佳模式。在开发环境下，很少使用真正的间歇调用，原因是后一个间歇调用可能会在前一个间歇调用结束之前启动。</li>
 <li>定时器对队列的工作方式是，当特定时间过去后将代码插入。设定一个150ms后执行的定时器不代表到了150ms代码就立刻执行，它表示代码会在150ms后被加入到队列中。</li>
-<li>浏览器的界面渲染线程与javascript引擎执行线程是互斥的。因为javascript脚本可以对Dom进行操作，如果一边脚本在操作的同时，界面渲染线程在工作，就会导致前后的数据不一致，javascript脚本操作的结果与界面看到的不一样。所以在javascript引擎运行时，浏览器的渲染线程会被挂起。</li>
+<li>浏览器的界面渲染线程与javascript引擎执行线程是互斥的。因为javascript脚本可以对Dom进行操作，如果一边脚本在操作的同时，界面渲染线程在工作，就会导致前后的数据不一致，javascript脚本操作的结果与界面看到的不一样。所以在javascript引擎运行时，浏览器的渲染线程会被挂起。所以js的异步其更多的是为了和界面UI 的分时，所以尽量将任务切割为细粒度的小任务，每次执行完一段小任务只耗费一段足够小的时间然后让出时间给UI，这样UI就不会卡死。如果任务切割得不好，任务段仍然耗时长，那么无论使什么花样，一样卡死UI。</li>
+<li>简单说，deferred对象就是jQuery的回调函数解决方案。在英语中，defer的意思是”延迟”，所以deferred对象的含义就是”延迟”到未来某个点再执行。</li>
+<li>deferred对象的最大优点，就是它把这一套回调函数接口，从ajax操作扩展到了所有操作。也就是说，任何一个操作—-不管是ajax操作还是本地操作，也不管是异步操作还是同步操作—-都可以使用deferred对象的各种方法，指定回调函数。</li>
+<li>前面部分的ajax操作时，deferred对象会根据返回结果，自动改变自身的执行状态；但是，在wait()函数中，这个执行状态必须由程序员手动指定。dtd.resolve()的意思是，将dtd对象的执行状态从”未完成”改为”已完成”，从而触发done()方法。类似的，还存在一个deferred.reject()方法，作用是将dtd对象的执行状态从”未完成”改为”已失败”，从而触发fail()方法。</li>
+<li>Promise语法糖：Promise对象是CommonJS工作组提出的一种规范，目的是为异步编程提供统一接口。</li>
 <li></li>
 </ul>
 
