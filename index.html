@@ -449,7 +449,8 @@
 <li>封装与继承的概念与在Javascript实现。</li>
 <li><strong>作用域由作用域链构成，作用域实际上就是一些内存区域。</strong></li>
 <li>闭包的优点是可以避免全局变量的污染，缺点是闭包会常驻内存。</li>
-<li>在Jquery插件内部，this关键字指的是jQuery对象的实例。而在一般的jQuery回调函数之中，this关键字指的是DOM对象。
+<li>在Jquery插件内部，this关键字指的是jQuery对象的实例。而在一般的jQuery回调函数之中，this关键字指的是DOM对象。</li>
+<li>在Jquery的实现中，$是一个函数，利用其原型$.propertype承载方法。扩展方式为$.fn.方法名，实现关键语句：$.fn = $.propertype、$.fn.init.property = $.fn。
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/03/29/进阶Javascript/#more" rel="contents">
               阅读全文 &raquo;
