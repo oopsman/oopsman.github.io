@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://oopsman.github.io/2016/04/04/BOM&DOM&异步/index.html">
 <meta property="og:site_name" content="照见自在">
 <meta property="og:description" content="BOM&amp;amp;DOM&amp;amp;异步自定义事件不是真正意义上的事件，可以把它理解为自定义函数，触发自定义事件就相当于调用自定义函数。">
-<meta property="og:updated_time" content="2017-02-11T07:07:28.205Z">
+<meta property="og:updated_time" content="2017-04-25T15:18:13.498Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BOM&DOM&异步">
 <meta name="twitter:description" content="BOM&amp;amp;DOM&amp;amp;异步自定义事件不是真正意义上的事件，可以把它理解为自定义函数，触发自定义事件就相当于调用自定义函数。">
@@ -264,7 +264,7 @@
 <li>deferred对象的最大优点，就是它把这一套回调函数接口，从ajax操作扩展到了所有操作。也就是说，任何一个操作—-不管是ajax操作还是本地操作，也不管是异步操作还是同步操作—-都可以使用deferred对象的各种方法，指定回调函数。</li>
 <li>前面部分的ajax操作时，deferred对象会根据返回结果，自动改变自身的执行状态；但是，在wait()函数中，这个执行状态必须由程序员手动指定。dtd.resolve()的意思是，将dtd对象的执行状态从”未完成”改为”已完成”，从而触发done()方法。类似的，还存在一个deferred.reject()方法，作用是将dtd对象的执行状态从”未完成”改为”已失败”，从而触发fail()方法。</li>
 <li>Promise语法糖：Promise对象是CommonJS工作组提出的一种规范，目的是为异步编程提供统一接口。</li>
-<li></li>
+<li>高阶函数和偏函数是异步编程的基础，熟练运用高阶函数和偏函数是非常必要的。高阶函数：1、函数作为参数；2、函数作为返回值；偏函数：1、一个创建函数的工厂函数；2、通过指定部分参数，定制新的函数。async是一个流程控制库，它就像黑夜中的明灯照亮那陷入callback嵌套泥潭的人们。</li>
 </ul>
 
       
