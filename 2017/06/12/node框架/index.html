@@ -57,16 +57,16 @@
 
 
 
-<meta name="description" content="在移动设备上进行网页的重构或开发，首先得搞明白的就是移动设备上的viewport了，只有明白了viewport的概念以及弄清楚了跟viewport有关的meta标签的使用，才能更好地让我们的网页适配或响应各种不同分辨率的移动设备。">
+<meta name="description" content="Node框架相关">
 <meta property="og:type" content="article">
-<meta property="og:title" content="移动web">
-<meta property="og:url" content="http://oopsman.github.io/2016/03/15/移动web/index.html">
+<meta property="og:title" content="node框架">
+<meta property="og:url" content="http://oopsman.github.io/2017/06/12/node框架/index.html">
 <meta property="og:site_name" content="照见自在">
-<meta property="og:description" content="在移动设备上进行网页的重构或开发，首先得搞明白的就是移动设备上的viewport了，只有明白了viewport的概念以及弄清楚了跟viewport有关的meta标签的使用，才能更好地让我们的网页适配或响应各种不同分辨率的移动设备。">
-<meta property="og:updated_time" content="2016-03-18T14:44:25.790Z">
+<meta property="og:description" content="Node框架相关">
+<meta property="og:updated_time" content="2017-06-13T06:41:56.716Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="移动web">
-<meta name="twitter:description" content="在移动设备上进行网页的重构或开发，首先得搞明白的就是移动设备上的viewport了，只有明白了viewport的概念以及弄清楚了跟viewport有关的meta标签的使用，才能更好地让我们的网页适配或响应各种不同分辨率的移动设备。">
+<meta name="twitter:title" content="node框架">
+<meta name="twitter:description" content="Node框架相关">
 
 
 
@@ -84,7 +84,7 @@
   };
 </script>
 
-  <title> 移动web | 照见自在 </title>
+  <title> node框架 | 照见自在 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -204,7 +204,7 @@
             
             
               
-                移动web
+                node框架
               
             
           </h1>
@@ -216,8 +216,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-15T15:09:26+08:00" content="2016-03-15">
-              2016-03-15
+            <time itemprop="dateCreated" datetime="2017-06-12T16:13:18+08:00" content="2017-06-12">
+              2017-06-12
             </time>
           </span>
 
@@ -243,39 +243,10 @@
       
 
       
-        <p>在移动设备上进行网页的重构或开发，首先得搞明白的就是移动设备上的viewport了，只有明白了viewport的概念以及弄清楚了跟viewport有关的meta标签的使用，才能更好地让我们的网页适配或响应各种不同分辨率的移动设备。<br><a id="more"></a></p>
-<h2 id="设备像素和CSS像素"><a href="#设备像素和CSS像素" class="headerlink" title="设备像素和CSS像素"></a>设备像素和CSS像素</h2><ul>
-<li>在这个迷你系列的文章里边我将会解释viewport，以及许多重要元素的宽度是如何工作的，比如<html>元素，也包括窗口和屏幕。</html></li>
-<li>css中的1px并不等于设备的1px—在移动端浏览器中以及某些桌面浏览器中，window对象有一个devicePixelRatio属性，<span style="color:red;font-weight:bold;">它的官方的定义为：设备物理像素和设备独立像素的比例，也就是devicePixelRatio = 物理像素 / 独立像素。</span>css中的px就可以看做是设备的独立像素，所以通过devicePixelRatio，我们可以知道该设备上一个css像素代表多少个物理像素。例如，在Retina屏的iphone上，devicePixelRatio的值为2，也就是说1个css像素相当于2个物理像素。但是要注意的是，devicePixelRatio在不同的浏览器中还存在些许的兼容性问题，所以我们现在还并不能完全信赖这个东西。</li>
-<li>现在不是有很多手机分辨率都非常大吗，比如768x1024，或者1080x1920这样，那这样的手机用来显示为桌面浏览器设计的网站是没问题的吧？前面我们已经说了，css中的1px并不是代表屏幕上的1px，你分辨率越大，css中1px代表的物理像素就会越多，devicePixelRatio的值也越大，这很好理解，<span style="color:red;font-weight:bold;">因为你分辨率增大了，但屏幕尺寸并没有变大多少，必须让css中的1px代表更多的物理像素，才能让1px的东西在屏幕上的大小与那些低分辨率的设备差不多，不然就会因为太小而看不清。</span></li>
-<li>现在我们已经有两个viewport了：layout viewport和visual viewport。但浏览器觉得还不够，因为现在越来越多的网站都会为移动设备进行单独的设计，所以必须还要有一个能完美适配移动设备的viewport。所谓的完美适配指的是，首先不需要用户缩放和横向滚动条就能正常的查看网站的所有内容；第二，显示的文字的大小是合适，比如一段14px大小的文字，不会因为在一个高密度像素的屏幕里显示得太小而无法看清，理想的情况是这段14px的文字无论是在何种密度屏幕，何种分辨率下，显示出来的大小都是差不多的。当然，不只是文字，其他元素像图片什么的也是这个道理。ppk把这个viewport叫做 ideal viewport，也就是第三个viewport——移动设备的理想viewport。</li>
-<li>ideal viewport并没有一个固定的尺寸，不同的设备拥有有不同的ideal viewport。所有的iphone的ideal viewport宽度都是320px，无论它的屏幕宽度是320还是640，也就是说，在iphone中，css中的320px就代表iphone屏幕的宽度。</li>
-<li>再总结一下：ppk把移动设备上的viewport分为layout viewport、visual viewport和ideal viewport三类，其中的ideal viewport是最适合移动设备的viewport，ideal viewport的宽度等于移动设备的屏幕宽度，只要在css中把某一元素的宽度设为ideal viewport的宽度(单位用px)，那么这个元素的宽度就是设备屏幕的宽度了，也就是宽度为100%的效果。<span style="color:red;font-weight:bold;">ideal viewport的意义在于，无论在何种分辨率的屏幕下，那些针对ideal viewport而设计的网站，不需要用户手动缩放，也不需要出现横向滚动条，都可以完美的呈现给用户。</span></li>
-<li>为什么需要有理想的viewport呢？比如一个分辨率为320x480的手机理想viewport的宽度是320px，而另一个屏幕尺寸相同但分辨率为640x960的手机的理想viewport宽度也是为320px，那为什么分辨率大的这个手机的理想宽度要跟分辨率小的那个手机的理想宽度一样呢？<span style="color:red;font-weight:bold;">这是因为，只有这样才能保证同样的网站在不同分辨率的设备上看起来都是一样或差不多的。</span>实际上，现在市面上虽然有那么多不同种类不同品牌不同分辨率的手机，但它们的理想viewport宽度归纳起来无非也就 320、360、384、400等几种，都是非常接近的，理想宽度的相近也就意味着我们针对某个设备的理想viewport而做出的网站，在其他设备上的表现也不会相差非常多甚至是表现一样的。</li>
-<li>现代浏览器中实现缩放的方式无怪乎都是「拉伸」像素。所以，元素的宽度并没有从128个像素被修改为256个像素；相反是实际像素被放大了两倍。形式上，元素仍然是128个CSS像素宽，即使它占据了256个设备像素的空间。1、现在让我们缩小。CSS像素开始收缩，这意味着现在一个设备像素覆盖了多个CSS像素；2、如果你进行放大，相反的行为会发生。CSS像素开始变大，现在一个CSS像素覆盖了多个设备像素。设备像素对你（译者：指的是开发者）来说基本上没用。但是对于用户不一样；用户将会放大或者缩小页面直到他能舒服的阅读为止。无论怎样，缩放比例对你不会产生影响。<span style="color:red;font-weight:bold;">浏览器将会自动的使你的CSS布局被拉伸或者被压缩。</span></li>
-<li>在缩放比例100%的情况下一个CSS像素完全等于一个设备像素。<ul>
-<li>屏幕尺寸：screen.width/height(用户屏幕的整体大小；度量单位：设备像素)，设备像素它们永远不会变：它们是显示器的属性，而不是浏览器的；</li>
-<li>窗口尺寸：window.innerWidth/Height(浏览器窗口的整体大小，包括滚动条；度量单位：CSS像素)；</li>
-<li>滚动距离：window.pageX/YOffset(包含了文档水平和垂直方向的滚动距离)；</li>
-<li>度量viewport：document.documentElement.clientWidth/Height，在那种情况下document.documentElement.clientWidth和-Height给出的仍然是viewport的尺寸，而不是<html>元素的。（这是一个特殊的规则，只对这个元素的这个属性对产生作用。在任何其他的情况下，使用的是元素的实际宽度）所以document.documentElement.clientWidth和-Height一直代表的是viewport的尺寸，不管&lt;html&gt;元素的尺寸是多少；</html></li>
-<li>度量&lt;html&gt;元素：document.documentElement.offsetWidth/Height；</li>
-<li>事件中的坐标：pageX/Y提供了相对于<html>元素的以CSS像素度量的坐标；clientX/Y提供了相对于viewport的以CSS像素度量的坐标；screenX/Y提供了相对于屏幕的以设备像素进行度量的坐标。</html></li>
-</ul>
-</li>
-<li>Retina display即视网膜屏幕，是苹果发布iPhone 4时候提出的，之所以叫做视网膜屏幕，是因为屏幕的PPI太高，人的视网膜无法分辨出屏幕上的像素点。iPhone 4/S的PPI为326，是iPhone 3G/S的两倍。</li>
-<li>viewport的功能是用来约束你网站中最顶级包含块元素（containing block）<html>的。<html>元素的宽度是被viewport的宽度所限制的。<html>元素使用viewport宽度的100%。<span style="color:red;font-weight:bold;">viewport，接着，实际上等于浏览器窗口：它就是那么定义的。viewport不是一个HTML结构，所以你不能用CSS来改变它。它在桌面环境下只是拥有浏览器窗口的宽度和高度。在移动环境下它会有一些复杂。</span></html></html></html></li>
-<li>两个属性对之间存在着正式区别：document.documentElement.clientWidth和-Height并不包含滚动条，但是window.innerWidth/Height包含。</li>
-<li>width/height使用和documentElement .clientWidth/Height（换句话说就是viewport宽高）一样的值。它是工作在CSS像素下的。device-width/device-height使用和screen.width/height（换句话说就是屏幕的宽高）一样的值。它工作在设备像素下面。</li>
-<li>缩放比例 zoom level：直接读出缩放比例是不可能的，但是你可以通过以screen.width除以window.innerWidth来获取它的值。当然这只有在两个属性都被完美支持的情况下才有用。</li>
-<li>像桌面环境一样，screen.width/height提供了以设备像素为单位的屏幕尺寸。像在桌面环境上一样，做为一个开发者你永远不需要这个信息。<span style="color:red;font-weight:bold;">你对屏幕的物理尺寸不感兴趣，而是对屏幕上当前有多少CSS像素感兴趣。web开发者不在乎高度，只在乎宽度。</span></li>
-<li>假设你创建了一个简单的页面，并且没有给你的元素设置「宽度」。那么现在它们会被拉伸来填满layout viewport宽度的100%。大部分浏览器会进行缩放从而在屏幕上展示整个layout viewport。</li>
-<li>总之记住这个结论就行了：在iphone和ipad上，无论你给viewport设的宽的是多少，如果没有指定默认的缩放值，则iphone和ipad会自动计算这个缩放值，以达到当前页面不会出现横向滚动条(或者说viewport的宽度就是屏幕的宽度)的目的。<h2 id="viewport-meta标签"><a href="#viewport-meta标签" class="headerlink" title="viewport meta标签"></a>viewport meta标签</h2></li>
-<li>意义：设置layout viewport的宽度。度量单位：CSS像素。</li>
-<li>width被用来定义layout viewport的宽度，如果不指定该属性（或者移除viewport meta标签），则layout viewport宽度为厂商默认值。如：iPhone为980px。</li>
-<li>initial-scale=1：可以把当前的的viewport变为ideal viewport，作用只是不对当前的页面进行缩放，首先你得弄明白这个缩放是相对于什么来缩放的，因为这里的缩放值是1，也就是没缩放，但却达到了ideal viewport的效果，所以，那答案就只有一个了，缩放是相对于ideal viewport来进行缩放的，当对ideal viewport进行100%的缩放，也就是缩放值为1的时候，不就得到了ideal viewport吗？事实证明，的确是这样的。</li>
-<li>每个移动设备浏览器中都有一个理想的宽度，这个理想的宽度是指css中的宽度，跟设备的物理宽度没有关系，在css中，这个宽度就相当于100%的所代表的那个宽度。我们可以用meta标签把viewport的宽度设为那个理想的宽度，如果不知道这个设备的理想宽度是多少，那么用device-width这个特殊值就行了，同时initial-scale=1也有把viewport的宽度设为理想宽度的作用。</li>
-<li>为什么需要有理想的viewport呢？比如一个分辨率为320x480的手机理想viewport的宽度是320px，而另一个屏幕尺寸相同但分辨率为640x960的手机的理想viewport宽度也是为320px，那为什么分辨率大的这个手机的理想宽度要跟分辨率小的那个手机的理想宽度一样呢？这是因为，只有这样才能保证同样的网站在不同分辨率的设备上看起来都是一样或差不多的。实际上，现在市面上虽然有那么多不同种类不同品牌不同分辨率的手机，但它们的理想viewport宽度归纳起来无非也就 320、360、384、400等几种，都是非常接近的，理想宽度的相近也就意味着我们针对某个设备的理想viewport而做出的网站，在其他设备上的表现也不会相差非常多甚至是表现一样的。</li>
-</ul>
+        <p>Node框架相关<br><a id="more"></a></p>
+<p>1、connection<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var mysql  = require('mysql');</span><br><span class="line">var connection = mysql.createConnection(&#123;</span><br><span class="line">  host     : 'localhost',</span><br><span class="line">  user     : 'me',</span><br><span class="line">  password : 'secret',</span><br><span class="line">  database : 'my_db'</span><br><span class="line">&#125;);	 </span><br><span class="line">connection.connect(); </span><br><span class="line">connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) &#123;</span><br><span class="line">  if (error) throw error;</span><br><span class="line">  console.log('The solution is: ', results[0].solution);</span><br><span class="line">&#125;);</span><br><span class="line">connection.end();</span><br><span class="line">//From this example, you can learn the following:</span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>Every method you invoke on a connection is queued and executed in sequence.<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">Closing the connection is done using end() which makes sure all remaining queries are executed <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>before sending a quit packet to the mysql server.<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>2、Transactions<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">connection.beginTransaction(function(err) &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  connection.query('INSERT INTO posts SET title=?', title, function (error, results, fields) &#123;</span><br><span class="line">    if (error) &#123;</span><br><span class="line">      return connection.rollback(function() &#123;</span><br><span class="line">	throw error;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;	 </span><br><span class="line">    var log = 'Post ' + result.insertId + ' added';	 </span><br><span class="line">    connection.query('INSERT INTO log SET data=?', log, function (error, results, fields) &#123;</span><br><span class="line">      if (error) &#123;</span><br><span class="line">	return connection.rollback(function() &#123;</span><br><span class="line">	  throw error;</span><br><span class="line">	&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      connection.commit(function(err) &#123;</span><br><span class="line">	if (err) &#123;</span><br><span class="line">	  return connection.rollback(function() &#123;</span><br><span class="line">	    throw err;</span><br><span class="line">	  &#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	console.log('success!');</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">// Please note that beginTransaction(), commit() and rollback() are simply convenience functions that  <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">'red'</span>&gt;</span> execute the START TRANSACTION, COMMIT, and ROLLBACK commands respectively.<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>3、For your convenience, this driver will cast mysql types into native JavaScript types by default. </p>
 
       
     </div>
@@ -293,17 +264,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/13/JS&CSS/" rel="next" title="JS&CSS">
-                <i class="fa fa-chevron-left"></i> JS&CSS
+              <a href="/2017/06/03/ThevoiceofBDGStore2/" rel="next" title="ThevoiceofBDGStore2!">
+                <i class="fa fa-chevron-left"></i> ThevoiceofBDGStore2!
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/03/28/Emmet/" rel="prev" title="Emmet">
-                Emmet <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -421,7 +388,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#设备像素和CSS像素"><span class="nav-number">1.</span> <span class="nav-text">设备像素和CSS像素</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#viewport-meta标签"><span class="nav-number">2.</span> <span class="nav-text">viewport meta标签</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">
