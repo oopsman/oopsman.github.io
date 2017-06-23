@@ -63,7 +63,7 @@
 <meta property="og:url" content="http://oopsman.github.io/2017/06/12/node框架/index.html">
 <meta property="og:site_name" content="照见自在">
 <meta property="og:description" content="Node框架相关">
-<meta property="og:updated_time" content="2017-06-13T06:41:56.716Z">
+<meta property="og:updated_time" content="2017-06-13T12:09:28.662Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node框架">
 <meta name="twitter:description" content="Node框架相关">
@@ -246,7 +246,7 @@
         <p>Node框架相关<br><a id="more"></a></p>
 <p>1、connection<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">var mysql  = require('mysql');</span><br><span class="line">var connection = mysql.createConnection(&#123;</span><br><span class="line">  host     : 'localhost',</span><br><span class="line">  user     : 'me',</span><br><span class="line">  password : 'secret',</span><br><span class="line">  database : 'my_db'</span><br><span class="line">&#125;);	 </span><br><span class="line">connection.connect(); </span><br><span class="line">connection.query('SELECT 1 + 1 AS solution', function (error, results, fields) &#123;</span><br><span class="line">  if (error) throw error;</span><br><span class="line">  console.log('The solution is: ', results[0].solution);</span><br><span class="line">&#125;);</span><br><span class="line">connection.end();</span><br><span class="line">//From this example, you can learn the following:</span><br><span class="line"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>Every method you invoke on a connection is queued and executed in sequence.<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br><span class="line">Closing the connection is done using end() which makes sure all remaining queries are executed <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">"red"</span>&gt;</span>before sending a quit packet to the mysql server.<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <p>2、Transactions<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">connection.beginTransaction(function(err) &#123;</span><br><span class="line">  if (err) &#123; throw err; &#125;</span><br><span class="line">  connection.query('INSERT INTO posts SET title=?', title, function (error, results, fields) &#123;</span><br><span class="line">    if (error) &#123;</span><br><span class="line">      return connection.rollback(function() &#123;</span><br><span class="line">	throw error;</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;	 </span><br><span class="line">    var log = 'Post ' + result.insertId + ' added';	 </span><br><span class="line">    connection.query('INSERT INTO log SET data=?', log, function (error, results, fields) &#123;</span><br><span class="line">      if (error) &#123;</span><br><span class="line">	return connection.rollback(function() &#123;</span><br><span class="line">	  throw error;</span><br><span class="line">	&#125;);</span><br><span class="line">      &#125;</span><br><span class="line">      connection.commit(function(err) &#123;</span><br><span class="line">	if (err) &#123;</span><br><span class="line">	  return connection.rollback(function() &#123;</span><br><span class="line">	    throw err;</span><br><span class="line">	  &#125;);</span><br><span class="line">	&#125;</span><br><span class="line">	console.log('success!');</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br><span class="line">// Please note that beginTransaction(), commit() and rollback() are simply convenience functions that  <span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span>=<span class="string">'red'</span>&gt;</span> execute the START TRANSACTION, COMMIT, and ROLLBACK commands respectively.<span class="tag">&lt;/<span class="name">font</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>3、For your convenience, this driver will cast mysql types into native JavaScript types by default. </p>
+<p>3、For your convenience, this driver will cast mysql types into native JavaScript types by default. If you are running into problems, one thing that may help is enabling the debug mode for the connection.<br>4、<br>5、</p>
 
       
     </div>
@@ -264,13 +264,17 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/03/ThevoiceofBDGStore2/" rel="next" title="ThevoiceofBDGStore2!">
-                <i class="fa fa-chevron-left"></i> ThevoiceofBDGStore2!
+              <a href="/2017/06/03/ThevoiceofBDGStore/" rel="next" title="ThevoiceofBDGStore!">
+                <i class="fa fa-chevron-left"></i> ThevoiceofBDGStore!
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/23/jeecms/" rel="prev" title="jeecms">
+                jeecms <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -338,7 +342,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">29</span>
+              <span class="site-state-item-count">30</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
