@@ -57,34 +57,16 @@
 
 
 
-<meta name="description" content="常见操作：
-
-快捷键：alt、shift
-取消选择：ctrl + d
-空格 + 鼠标—–&amp;gt;拖动
-工具栏、属性栏
-储存为web格式">
+<meta name="description" content="webpack是一款模块加载器兼打包工具，它能把各种资源，例如JS(含JSX)、coffee、样式(含less/sass)、图片等都作为模块来使用和处理。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PS操作">
-<meta property="og:url" content="http://oopsman.github.io/2016/03/30/PS操作/index.html">
+<meta property="og:title" content="webpack">
+<meta property="og:url" content="http://oopsman.github.io/2017/06/23/webpack/index.html">
 <meta property="og:site_name" content="照见自在">
-<meta property="og:description" content="常见操作：
-
-快捷键：alt、shift
-取消选择：ctrl + d
-空格 + 鼠标—–&amp;gt;拖动
-工具栏、属性栏
-储存为web格式">
-<meta property="og:updated_time" content="2016-04-24T16:32:44.649Z">
+<meta property="og:description" content="webpack是一款模块加载器兼打包工具，它能把各种资源，例如JS(含JSX)、coffee、样式(含less/sass)、图片等都作为模块来使用和处理。">
+<meta property="og:updated_time" content="2017-06-26T07:00:20.502Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PS操作">
-<meta name="twitter:description" content="常见操作：
-
-快捷键：alt、shift
-取消选择：ctrl + d
-空格 + 鼠标—–&amp;gt;拖动
-工具栏、属性栏
-储存为web格式">
+<meta name="twitter:title" content="webpack">
+<meta name="twitter:description" content="webpack是一款模块加载器兼打包工具，它能把各种资源，例如JS(含JSX)、coffee、样式(含less/sass)、图片等都作为模块来使用和处理。">
 
 
 
@@ -102,7 +84,7 @@
   };
 </script>
 
-  <title> PS操作 | 照见自在 </title>
+  <title> webpack | 照见自在 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -222,7 +204,7 @@
             
             
               
-                PS操作
+                webpack
               
             
           </h1>
@@ -234,8 +216,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-30T19:38:30+08:00" content="2016-03-30">
-              2016-03-30
+            <time itemprop="dateCreated" datetime="2017-06-23T14:59:34+08:00" content="2017-06-23">
+              2017-06-23
             </time>
           </span>
 
@@ -261,24 +243,23 @@
       
 
       
-        <p>常见操作：</p>
+        <p>webpack是一款模块加载器兼打包工具，它能把各种资源，例如JS(含JSX)、coffee、样式(含less/sass)、图片等都作为模块来使用和处理。<br><a id="more"></a></p>
 <ul>
-<li>快捷键：alt、shift</li>
-<li>取消选择：ctrl + d</li>
-<li>空格 + 鼠标—–&gt;拖动</li>
-<li>工具栏、属性栏</li>
-<li>储存为web格式<a id="more"></a>
-<ul>
-<li>针对切图最适合的ps界面设置。编辑—首选项—单位均改为像素；视图—标尺、显示—智能参考线；窗口—四大面板：信息、字符、图层、历史记录；(在视图里工作区保存便复用)</li>
-<li>选择图层：取消自动选择，按住ctrl键后单击亦可选中图层。</li>
-<li>工具栏对应的属性栏。</li>
-<li>选框工具的四大属性：单个框、多框加、减、交。按住ctrl点击右侧的图层会选中状态。按住alt键点击右侧图层的眼睛会取消其他图层，只保留当前图层。</li>
-<li>盖印图层：快捷键Ctrl + Alt + Shift + E。</li>
-<li>选框工具中的单行或单列都是1像素大小。选框中确定圆心按住alt键。选取快捷键：shift键是增加，alt是减少。</li>
-<li>在图层文字上双击可修改文字，双击其他部分则弹出图层样式设置。图层的层级关系：上面的会遮住下面的。</li>
-<li>自动切图(通过添加扩展名实现)：编辑–首选项–启用生成器；文件—生成—图像资源。</li>
-</ul>
+<li>Webpack会分析入口文件，解析包含依赖关系的各个文件。这些文件(模块)都打包到bundle.js。Webpack会给每个模块分配一个唯一的id并通过这个id索引和访问模块。在页面启动时，会先执行entry.js中的代码，其它模块会在运行require的时候再执行。</li>
+<li><p>webpack有一个智能解析器，几乎可以处理任何第三方库，无论它们的模块形式是CommonJS、AMD还是普通的JS文件。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">/******/ (function(modules) &#123; // webpackBootstrap</span><br><span class="line">/******/ 	// The module cache</span><br><span class="line">/******/ 	var installedModules = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">/******/ 	// The require function</span><br><span class="line">/******/ 	function __webpack_require__(moduleId) &#123;</span><br><span class="line"></span><br><span class="line">/******/ 		// Check if module is in cache</span><br><span class="line">/******/ 		if(installedModules[moduleId])</span><br><span class="line">/******/ 			return installedModules[moduleId].exports;</span><br><span class="line"></span><br><span class="line">/******/ 		// Create a new module (and put it into the cache)</span><br><span class="line">/******/ 		var module = installedModules[moduleId] = &#123;</span><br><span class="line">/******/ 			exports: &#123;&#125;,</span><br><span class="line">/******/ 			id: moduleId,</span><br><span class="line">/******/ 			loaded: false</span><br><span class="line">/******/ 		&#125;;</span><br><span class="line"></span><br><span class="line">/******/ 		// Execute the module function</span><br><span class="line">/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);</span><br><span class="line"></span><br><span class="line">/******/ 		// Flag the module as loaded</span><br><span class="line">/******/ 		module.loaded = true;</span><br><span class="line"></span><br><span class="line">/******/ 		// Return the exports of the module</span><br><span class="line">/******/ 		return module.exports;</span><br><span class="line">/******/ 	&#125;</span><br><span class="line"></span><br><span class="line">/******/ 	// expose the modules object (__webpack_modules__)</span><br><span class="line">/******/ 	__webpack_require__.m = modules;</span><br><span class="line"></span><br><span class="line">/******/ 	// expose the module cache</span><br><span class="line">/******/ 	__webpack_require__.c = installedModules;</span><br><span class="line"></span><br><span class="line">/******/ 	// __webpack_public_path__</span><br><span class="line">/******/ 	__webpack_require__.p = "";</span><br><span class="line"></span><br><span class="line">/******/ 	// Load entry module and return exports</span><br><span class="line">/******/ 	return __webpack_require__(0);</span><br><span class="line">/******/ &#125;)</span><br><span class="line">/************************************************************************/</span><br><span class="line">/******/ ([</span><br><span class="line">/* 0 */</span><br><span class="line">/***/ function(module, exports, __webpack_require__) &#123;</span><br><span class="line"></span><br><span class="line">	document.write(__webpack_require__(1));</span><br><span class="line"></span><br><span class="line">/***/ &#125;,</span><br><span class="line">/* 1 */</span><br><span class="line">/***/ function(module, exports) &#123;</span><br><span class="line"></span><br><span class="line">	moudle.exports = " it works from content.js";</span><br><span class="line"></span><br><span class="line">/***/ &#125;</span><br><span class="line">/******/ ]);</span><br></pre></td></tr></table></figure>
 </li>
+<li><p>Webpack本身只能处理JavaScript模块，如果要处理其他类型的文件，就需要使用loader进行转换。</p>
+</li>
+<li>Loader可以理解为是模块和资源的转换器，它本身是一个函数，接受源文件作为参数，返回转换的结果。这样，我们就可以通过require来加载任何类型的模块或文件，比如CoffeeScript、JSX、LESS或图片。<br>Loader特性：Loader可以通过管道方式链式调用，每个loader可以把资源转换成任意格式并传递给下一个loader，但是最后一个loader必须返回JavaScript。Loader运行在node.js环境中，所以可以做任何可能的事情。 </li>
+<li>我们要在页面中引入一个CSS文件style.css，首页将style.css也看成是一个模块，然后用css-loader来读取它，再用style-loader把它插入到页面中。</li>
+<li>Webpack在执行的时候，除了在命令行传入参数，还可以通过指定的配置文件来执行。默认情况下，会搜索当前目录的webpack.config.js文件，这个文件是一个node.js模块，返回一个json格式的配置信息对象，或者通过–config选项来指定配置文件。    </li>
+<li>Webpack配置项说明：<br>  entry：指定打包的入口文件，每有一个键值对，就是一个入口文件<br>  output：配置打包结果，path定义了输出的文件夹，filename则定义了打包结果文件的名称<br>  module：定义了对模块的处理逻辑，这里可以用loaders定义了一系列的加载器，以及一些正则。当需要加载的文件匹配test的正则时，就会调用后面的loader对文件进行处理，这正是webpack强大的原因。</li>
+<li>插件可以完成更多loader不能完成的功能。插件的使用一般是在webpack的配置信息plugins选项中指定。Webpack本身内置了一些常用的插件，还可以通过npm安装第三方插件。</li>
+<li>expose-loader——-require(‘expose?$!jquery’)：把$作为别名为jquery的变量暴露到全局上下文中。</li>
+<li></li>
+<li></li>
+<li></li>
 </ul>
 
       
@@ -297,17 +278,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/03/29/进阶Javascript/" rel="next" title="进阶Javascript">
-                <i class="fa fa-chevron-left"></i> 进阶Javascript
+              <a href="/2017/06/23/jeecms/" rel="next" title="jeecms">
+                <i class="fa fa-chevron-left"></i> jeecms
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/04/BOM&DOM&异步/" rel="prev" title="BOM&DOM&异步">
-                BOM&DOM&异步 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
