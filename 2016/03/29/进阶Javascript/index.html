@@ -67,7 +67,7 @@ Javascript还提供了一个instanceof运算符，验证构造函数与实例对
 <meta property="og:description" content="typeof的类型: number string boolean undefined object function。使用typeof操作符检测函数时，该操作符会返回“function”。其他的new对象返回”object”。
 Javascript还提供了一个instanceof运算符，验证构造函数与实例对象之间的关系。
 为了配合prototype属性，Javascript定义了一些辅助方法，帮">
-<meta property="og:updated_time" content="2016-04-09T04:34:10.375Z">
+<meta property="og:updated_time" content="2017-09-14T02:34:32.989Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="进阶Javascript">
 <meta name="twitter:description" content="typeof的类型: number string boolean undefined object function。使用typeof操作符检测函数时，该操作符会返回“function”。其他的new对象返回”object”。
@@ -268,11 +268,12 @@ Javascript还提供了一个instanceof运算符，验证构造函数与实例对
 <li>其静态属性有两种访问方式，即长属性名和段属性名。每次执行方法都会动态改变静态属性的值。</li>
 <li>String 类型定义了几个用于在字符串中匹配模式的方法。第一个方法就是match()，在字符串上调用这个方法，本质上与调用RegExp的exec()方法相同。返回一个数组。<h2 id="Function"><a href="#Function" class="headerlink" title="Function"></a>Function</h2></li>
 <li>函数的内部属性：arguments、this；</li>
-<li>函数的属性和方法—属性：length、prototype；方法：call、apply(在特定的作用域下调用函数，特定的作用域由第一个参数指定，非继承的方法，来之function.prototype)；<h2 id="This"><a href="#This" class="headerlink" title="This"></a>This</h2></li>
+<li>函数的属性和方法—属性：length、prototype；方法：call、apply(在特定的作用域下调用函数，特定的作用域由第一个参数指定，非继承的方法，来之function.prototype)；<h2 id="This"><a href="#This" class="headerlink" title="This"></a>This</h2><font color="red">在函数中this到底取何值，是在函数真正被调用执行的时候确定下来的，函数定义的时候确定不了。因为this的取值是函数执行上下文(context)的一部分，每次调用函数，都会产生一个新的执行上下文环境。当代码中使用了this，这个this的值就直接从执行的上下文中获取了，而不会从作用域链中搜寻。</font></li>
+<li>箭头函数完全修复了this的指向，this总是指向词法作用域，也就是外层调用者obj</li>
 <li>直接函数调用 window</li>
 <li>当前调用的对象 xx.yy()</li>
 <li>new操作符指向新创建的区域</li>
-<li>在call/apply时，第一个参数相当于设置函数体内this的值<strong>(对象与方法解耦了)</strong>。<h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2></li>
+<li>在call/apply时，第一个参数相当于设置函数体内this的值<strong>(对象与方法解耦)</strong><h2 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h2></li>
 <li>原型对象都是有Object对象创建的。</li>
 <li>原生对象和我们自定义对象一样，都存在原型，原生对象的方法都存在原型中，这样我们创建一个新的对象实例时，这些对象就会拥有这些方法。</li>
 <li>所有的实例对象都继承了创建它们的构造函数的原型对象。</li>
@@ -489,7 +490,7 @@ SubType.prototype.getSubFlag = function() {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">36</span>
+              <span class="site-state-item-count">37</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
