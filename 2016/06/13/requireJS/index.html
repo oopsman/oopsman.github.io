@@ -1,0 +1,781 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="CommonJS规范不适用于浏览器环境，这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态。因此，浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous）。这就是A">
+<meta property="og:type" content="article">
+<meta property="og:title" content="requireJS">
+<meta property="og:url" content="http://oopsman.github.io/2016/06/13/requireJS/index.html">
+<meta property="og:site_name" content="照见自在">
+<meta property="og:description" content="CommonJS规范不适用于浏览器环境，这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态。因此，浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous）。这就是A">
+<meta property="og:updated_time" content="2016-06-14T09:49:00.032Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="requireJS">
+<meta name="twitter:description" content="CommonJS规范不适用于浏览器环境，这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态。因此，浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous）。这就是A">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> requireJS | 照见自在 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">照见自在</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">From 0 To 1</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                requireJS
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-13T09:32:01+08:00" content="2016-06-13">
+              2016-06-13
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/13/requireJS/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2016/06/13/requireJS/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>CommonJS规范不适用于浏览器环境，这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态。<br>因此，浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous）。这就是AMD规范诞生的背景。AMD也采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：require([module], callback);第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。<br>使用requireJS的优点有哪些？</p>
+<ol>
+<li>实现JS文件的异步加载，避免网页被堵塞。</li>
+<li>管理模块之间的依赖性，便于代码的编写和维护。<br>require.js要求，每个模块是一个单独的js文件。这样的话，如果加载多个模块，就会发出多次HTTP请求，会影响网页的加载速度。因此，require.js提供了一个优化工具，当模块部署完毕以后，可以用这个工具将多个模块合并在一个文件中，减少HTTP请求数。<a id="more"></a>
+</li>
+</ol>
+<p>引入步骤：</p>
+<ul>
+<li>在页面头部head标签内引入requireJS，如下：&lt;script src=”js/require.js”&gt;&lt;/script&gt;，但是加载这个文件也会造成网页失去响应，我们可以加上defer和async这个属性。如下：&lt;script src=”js/require.js” defer async=”true” &gt;&lt;/script&gt;，Async属性表明文件需要异步加载，IE不支持这个属性，只支持defer，所以上面把这2个属性都加上。</li>
+<li>requireJS启动加载脚本的初始化方式，requireJS支持属性data-main这个属性来加载初始化的JS文件，如下：&gt;script src=”js/require.js” defer async=”true” data-main=”js/main.js”&gt;&lt;/script&lt; 上面的意思是：先异步加载requireJS文件，完成后继续异步加载app.js文件。上面的app.js后的.js可以去掉，因为requireJS源码已经默认都是以后缀JS文件结尾的。</li>
+<li>data-main属性所指的js我把它称为”主模块”，意思是整个网页的入口代码。它有点像C语言的main()函数，所有代码都从这儿开始运行。</li>
+</ul>
+<p>模块步骤：</p>
+<ul>
+<li>RequireJS编写模块不同于其他脚本文件，它良好的使用define来定义一个作用域避免全局空间污染，它可以显示出其依赖关系，并以函数(定义此模块的那个函数)参数的形式将这些依赖进行注入。</li>
+<li>define中直接返回一个对象，可以解决全局变量的理念。比如全局变量全部使用define函数包围，什么时候需要全局变量的话，直接require([‘XX’],function(XX){})这样调用下。</li>
+<li>使用require.config()方法，我们可以对模块的加载行为进行自定义。require.config()就写在主模块（main.js）的头部。</li>
+<li>If a module ID has one of the following characterstics, the ID will not be passed through the “baseUrl + paths” configuration, and just be treated like a regular URL that is relative to the document:<br><em>Ends in “.js”.
+</em>Starts with a “/“.<br>*Contains an URL protocol, like “http:” or “https:”。</li>
+<li></li>
+</ul>
+<p>AMD模块定义<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">       //包装模块  使用exports或者module.exports导出API</span><br><span class="line">define(function(require, exports, module) &#123;</span><br><span class="line">//require require函数</span><br><span class="line">//exports exports空对象 被注入对象</span><br><span class="line">//module  module模块对象 含有id、uri等  ***id:"app/faq" ***uri:"js/app/faq.js"</span><br><span class="line">var base = require('base');   //可拿到了</span><br><span class="line">       exports.show = function() &#123; </span><br><span class="line">    //todo with module base </span><br><span class="line">       &#125;  </span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>requireJS配置项</p>
+<ul>
+<li>baseUrl:指定本地模块的基准目录，即本地模块的路径是相对于那个目录的。该属性通常有requireJS加载时的data-main属性指定。如果未显示设置baseUrl,则默认值是加载require.js的html所处的位置，如果使用了data-main属性的话，则该路径变成了baseUrl。</li>
+<li>paths:paths是映射那些不直接放在baseUrl指定的目录下的文件，设置paths的起始位置是相对于baseUrl的，除非该paths设置是以”/”开头或含有URL协议(<a href="http://或者https://" target="_blank" rel="external">http://或者https://</a>).<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 关键点是确定目录   默认是在lib下加载  当是app时就是app下</span><br><span class="line"> requirejs.config(&#123;</span><br><span class="line">   baseUrl: 'js/lib',</span><br><span class="line">   paths: &#123;</span><br><span class="line">       app: '../app'</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;);</span><br><span class="line">  requirejs(['app/a'],function(a)&#123;</span><br><span class="line"></span><br><span class="line">  &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>shim参数</p>
+<ul>
+<li>解决了使用非AMD方式定义的模块(如jquery插件)及其载入顺序，为那些没有使用define()来声明依赖关系，设置模块的”浏览器全局变量注入”型脚本做依赖和导出配置。</li>
+<li>也就是说shim这个参数可以解决没有使用define(function(){})这样的文件包围的代码或者一些全局变量注入，可以确保此文件先加载，然后再加载其他文件。</li>
+<li><p>shim属性，专门用来配置不兼容的模块。具体来说，每个模块要定义（1）exports值（输出的变量名），表明这个模块外部调用时的名称；（2）deps数组，表明该模块的依赖性。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//jQuery的插件可以这样定义</span><br><span class="line">shim: &#123;</span><br><span class="line">　　　　'jquery.scroll': &#123;</span><br><span class="line">　　　　　　deps: ['jquery'],</span><br><span class="line">　　　　　　exports: 'jQuery.fn.scroll'</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如果我不使用shim这个参数的话，在最新版的requirejs2.1.15中(以前的版本我不太清楚)，也可以通过require([‘XX’])来解决，如下演示：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"> global.js代码如下：</span><br><span class="line"> names = 1111;</span><br><span class="line"> 创造一个全局变量names，其中js/app/depBase.js代码如下：</span><br><span class="line">  define(function()&#123;</span><br><span class="line">       return &#123;</span><br><span class="line">                'name':names</span><br><span class="line">       &#125;</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">也就是说我在app.js代码如下初始化如下：</span><br><span class="line">require.config(&#123;</span><br><span class="line">       baseUrl: 'js/app'</span><br><span class="line">&#125;);</span><br><span class="line">require(['global','depBase'],function(global,base)&#123;</span><br><span class="line">       console.log(base);</span><br><span class="line">&#125;);</span><br><span class="line">我先global初始化引入全局变量names，接着打印出depBase的返回值。也可以看到，可以引入到全局变量names的值。</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>Map参数</p>
+<ul>
+<li>Map参数是用来解决同一个模块不同版本的问题。比如在项目开发中，开发初期使用了jquery1.7版本，但是由于业务的需求需要引入jquery1.9以上的版本时候，但是又担心有些是依赖于jquery1.7的代码升级到1.9以上的时候会有问题，因此可以让一部分代码还是依赖于jquery1.7,新增的代码依赖于jquery1.9。</li>
+</ul>
+<p>config参数</p>
+<ul>
+<li><p>config是指需要将配置信息传给一个模块，这些配置往往是application级别的信息，需要一个手段将他们向下传递给模块。在requireJS中，基于requirejs.config()的config配置项来实现。要获取这些信息的模块可以加载特殊的依赖”moudle”,并调用module.config().</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">//加载特殊的依赖"moudle"</span><br><span class="line">define(['module'], function (module) &#123;</span><br><span class="line">    //Will be the value 'blue'</span><br><span class="line">    var color = module.config().color;</span><br><span class="line">	 return color;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>requireJS函数增加了第三个参数errbacks。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">require(['b'], function ($) &#123;</span><br><span class="line">   //Do something with $ here</span><br><span class="line"> &#125;, function (err) &#123;</span><br><span class="line">    alert(err);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>在模块载入失败回调中可以使用undef函数移除模块的注册。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">require(['b'], function ($) &#123;</span><br><span class="line">   //Do something with $ here</span><br><span class="line"> &#125;, function (err) &#123;</span><br><span class="line">      var failedId = err.requireModules &amp;&amp; err.requireModules[0];</span><br><span class="line">      if (failedId === 'b') &#123;</span><br><span class="line">           requirejs.undef(failedId);</span><br><span class="line">      &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>require.js插件</p>
+<ul>
+<li><p>require.js还提供一系列插件，实现一些特定的功能。domready插件，可以让回调函数在页面DOM结构加载完成后再运行。text和image插件，则是允许require.js加载文本和图片文件。</p>
+<hr>
+</li>
+</ul>
+<p>requireJS对文件合并与压缩：</p>
+<ul>
+<li>node r.js –o baseUrl=js  name=app out=build.js</li>
+<li>node r.js –o baseUrl=js name=app out=build.js optimize=none<br>下面我们对命令分别来做一下解释：<br>-o： 表示优化，该参数是固定的，必选。<br>baseUrl：指存模块的根目录，可选。<br>name： 模块的入口文件，这里是app,那么r.js会从baseUrl+name去查找app.js，然后找出所有依赖的模块，然后进行合并与压缩。<br>out: 指合并压缩后输出的文件路径，这里是直接输出在根目录下build.js 我们也可以输出到其他目录下 比如js/app 目录下，也可以的。<br>optimize=none：只合并不压缩。</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/12/JS之Code/" rel="next" title="JS之Code">
+                <i class="fa fa-chevron-left"></i> JS之Code
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/06/15/NG之代码/" rel="prev" title="NG之代码">
+                NG之代码 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="Johnthat" />
+          <p class="site-author-name" itemprop="name">Johnthat</p>
+          <p class="site-description motion-element" itemprop="description">记录生活点滴</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">37</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+          
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-name">分类</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+            <p class="site-author-name">友情链接</p>
+            
+              <span class="links-of-author-item">
+                <a href="http://91fz.org/" target="_blank">程序员疯子</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://dmlcoding.com/" target="_blank">Time渐行渐远</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://blog.hyperj.net/" target="_blank">HyperJ</a>
+              </span>
+            
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Johnthat</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+
+  
+
+
+
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.scheme !== 'Pisces' && (CONFIG.sidebar.display === 'post' || CONFIG.sidebar.display === 'always')) {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'oopsman';
+      var disqus_identifier = '2016/06/13/requireJS/';
+      var disqus_title = 'requireJS';
+      var disqus_url = 'http://oopsman.github.io/2016/06/13/requireJS/';
+
+      function run_disqus_script(disqus_script){
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+      
+        run_disqus_script('embed.js');
+      
+    </script>
+  
+
+
+
+  
+  
+  
+
+  
+
+
+</body>
+</html>
