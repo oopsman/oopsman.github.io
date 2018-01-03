@@ -136,7 +136,20 @@
 </li>
 <li><p>什么是xinetd：xinetd是新一代的网络守护进程服务程序，又叫超级Internet服务器,常用来管理多种轻量级Internet服务。xinetd提供类似于inetd+tcp_wrapper的功能，但是更加强大和安全。</p>
 </li>
-<li></li>
+<li>hexo自定义页面：执行new page命令 <code>hexo new page &quot;about&quot;</code>，在hexo\source\下会生成about目录，里面有个index.md，直接编辑就可以了，然后在主题的_config.yml中将其配置显示出来。</li>
+<li>页面展现的全部逻辑都在每个主题中控制，源代码在hexo\themes\你使用的主题\中。</li>
+<li>如果您的主题太过于复杂，或是需要生成的文件量太过于庞大，可能会大幅降低性能，除了简化主题外，您可以考虑Hexo 2.7新增的局部缓存(Fragment Caching)功能。它可用于页首、页脚、侧边栏等文件不常变动的位置。</li>
+<li>主题中，在layout目录下的index.ejs会自动继承layout.ejs，并将其中的内容填入&lt;%- body %&gt;的位置。</li>
+<li>Hexo有三种默认布局：post、page 和 draft，它们分别对应不同的路径。</li>
+<li>Hexo就是把那些 Markdown 文件按照不同的布局模板，填上对应的数据生成 HTML 页面，复制 source 中的文件到生成的 public 文件夹中，中间过程会把需要编译的stylus/less/sass等文件编译。</li>
+<li>若要建立一个多语种的网站，<code>$ hexo new &quot;Hello World&quot; --lang tw</code>，当您建立新文章时，文章会被储存到：<code>source/_posts/tw/Hello-World.md</code>。</li>
+<li><p>About菜单对应的layout：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: About me</span><br><span class="line">date: 2017-12-25 17:44:10</span><br><span class="line">layout: page</span><br><span class="line">comments: false</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在模板中，透过__辅助函数，即可取得翻译后的字符串。</p>
+</li>
+<li>每一个模板文件对应的是一种布局，当你使用hexo new <title>的时候，其实忽略了一个参数，完整的命令是hexo new [layout] <title>，这个layout就决定了文章使用何种方式布局，比如创建一个自己简介的About页面，hexo new page “about”其实就是使用了page布局。每种布局对应到我们的模板文件上就是index.ejs(首页),post.ejs(文章),archive.ejs(归档),tag.ejs(标签归档),page.ejs(分页)。</title></title></li>
+<li>制作一个分页器，我们需要知道文章的总数和每页展示的文章数，然后通过循环生成每个link标签，还要根据当前页面判断link标签的active状态，但是在Hexo中这些都不用我们自己来做了!Hexo提供了paginator这一辅助函数帮助我们生成分页器，只需要将文章总数site.posts.length和每页文章数config.per_page传入就可以生成了。</li>
 <li></li>
 </ul>
 	  
@@ -213,7 +226,7 @@
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2017 Johnthat
+  &copy; 2018 Johnthat
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a>,<a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>,<a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a> and <a href="http://getbootstrap.com/" target="_blank">BOOTSTRA.386</a>. 
      <br> Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind.386</a>.    
