@@ -115,6 +115,7 @@
 <p>snapshot在系统初始时最好做一次，方便以后的快速恢复应急。</p>
 <p>然后就要在新的vps上部署博客了，基本步骤：<br>1、ssh免密登录<br>2、建立裸仓库并添加钩子(裸仓库没有工作区，我们不会在裸仓库上进行操作，它只为共享而存在)<br>3、安全级别上修改ssh的端口号，以及新添加用户不能登录和目录操作权限<br>4、安装nginx并配置(服务目录、域名跳转等)<br>5、修改域名的解析<br>6、防火墙的设置 iptables(记得保存啊，不然重启就没了哇!)</p>
 <p>以上可以考虑写个shell了吧！！！</p>
+<p>补充：<br>ss/ssr的目的就是用来翻墙的，而vpn的目的是用来加密企业数据的，对于vpn来说安全是第一位的，而对于ss/ssr来说穿透防火墙是第一位，抗干扰性强，而且对流量做了混淆，所有流量在通过防火墙的时候，基本上都被识别为普通流量，也就是说你翻墙了，但是政府是检测不到你在翻墙的。两者的出发点和着重点就不同，ss/ssr更注重流量的混淆加密。</p>
 	  
 	</div>
 
@@ -124,7 +125,8 @@
 
     
     
-    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    <a href="/2018/03/03/Reading-Plan/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
