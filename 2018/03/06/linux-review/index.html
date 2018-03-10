@@ -132,6 +132,7 @@
 <p>刚刚我们讲到了，使用useradd建立了账号之后，在默认的情况下，该账号是暂时被封锁的，也就是说，该账号是无法登录的，你可以去瞧一瞧/etc/shadow内的第二个字段就知道了。那该如何是好？怕什么？直接给他设置新密码就好了！对吧～设置密码就使用passwd！(root可以帮忙设置各式各样的密码，系统几乎一定会接受!) </p>
 <p>用户身份切换—如何让一般用户转变身份成为root呢？主要有两种方式：<br>1、以”su -“直接将身份变成root即可，但是这个命令却需要root的密码，也就是说，如果你要以su变成root的话，你的一般用户就必须要有root的密码才行；(-代表使用login-shell的变量文件读取方式来登陆系统、使用exit退出身份、使用root切换成为任何用户时，并不需要输入新用户的密码)<br>2、以”sudo 命令”执行root的命令串，由于sudo需要事先设置妥当，且sudo需要输入用户自己的密码，因此多人共管同一部主机时，sudo要比su来的好！至少root密码不会流出去！(并非所有人都能够运行sudo，而是仅有/etc/sudoers内的用户才能够执行sudo这个命令、除了root之外的其他账号，若想要使用sudo执行属于root的权限命令，则root需要先使用visudo去修改/etc/sudoers，让该账号能够使用全部或部分的root命令功能、sudo搭配su的使用方式：只要输入”sudo su -“并且输入自己的密码后，立刻变成root的身份！不但root密码不会外泄，用户的管理也变的非常方便！)</p>
 <p>用户的特殊shell：/sbin/nologin是一个特殊的shell,如果一个账号的shell是/sbin/nologin,那么它是无法通过shell登录的，但是它可以使用系统的资源，这样就限制了这个账号使用shell的权利。因为有些账号是不需要使用shell的，分给它们会让系统陷入危险。</p>
+<p>Linux工作排调度的种类：at、cron。<br>at：是个可以处理仅执行一次就结束调度的命令，不过要执行at时，必须要有atd这个服务的支持才行。CentOS默认是启动的。(事实上，当我们使用at时会进入一个at shell的环境来让用户执行任务命令，ctrl+D结束、我们可以利用/etc/at.allow与/etc/at.deny这两个文件来进行at的使用限制)<br>cron：这个这个命令所完成的工作将会循环一直进行下去！crontab除了可以使用命令执行外，亦可编辑/etc/crontab来支持。而让crontab可以生效的服务是crond这个服务！(与at类似的使用限制，/etc/cron.allow优先级比/etc/cron.deny要高、crontab -e是针对用户的cron来设计的(会被记录到/var/spool/cron/)，如果是系统的例行性任务时，只需要编辑/etc/crontab这个文件就可以、/n(斜线)即是“每隔n单位间隔”的意思、cron执行的每一项工作都会被记录到/var/log/cron这个日志文件中)<br>基本上，cron这个服务的最低检测限制是”分钟”，所以cron会每分钟去读取一次/etc/crontab与/var/spool/cron里面的数据内容，因此，只要你编辑完/etc/crontab这个文件，并且将它保存之后，那么cron的设定就自动会来执行了！<br>anacron并不是用来取代crontab的，anacron存在的目的就在于我们上头提到的，处理非24小时一直启动的Linux系统的crontab的执行！anacron其实是一个程序并非一个服务！</p>
 	  
 	</div>
 
@@ -141,7 +142,8 @@
 
     
     
-    <a type="button" class="btn btn-default disabled"><i class="fa fa-arrow-circle-o-left"></i>Prev</a>
+    <a href="/2018/03/10/Free-Software-Song/" type="button" class="btn btn-default"><i
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
