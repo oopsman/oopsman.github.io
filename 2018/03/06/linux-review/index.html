@@ -133,6 +133,10 @@
 <p>用户身份切换—如何让一般用户转变身份成为root呢？主要有两种方式：<br>1、以”su -“直接将身份变成root即可，但是这个命令却需要root的密码，也就是说，如果你要以su变成root的话，你的一般用户就必须要有root的密码才行；(-代表使用login-shell的变量文件读取方式来登陆系统、使用exit退出身份、使用root切换成为任何用户时，并不需要输入新用户的密码)<br>2、以”sudo 命令”执行root的命令串，由于sudo需要事先设置妥当，且sudo需要输入用户自己的密码，因此多人共管同一部主机时，sudo要比su来的好！至少root密码不会流出去！(并非所有人都能够运行sudo，而是仅有/etc/sudoers内的用户才能够执行sudo这个命令、除了root之外的其他账号，若想要使用sudo执行属于root的权限命令，则root需要先使用visudo去修改/etc/sudoers，让该账号能够使用全部或部分的root命令功能、sudo搭配su的使用方式：只要输入”sudo su -“并且输入自己的密码后，立刻变成root的身份！不但root密码不会外泄，用户的管理也变的非常方便！)</p>
 <p>用户的特殊shell：/sbin/nologin是一个特殊的shell,如果一个账号的shell是/sbin/nologin,那么它是无法通过shell登录的，但是它可以使用系统的资源，这样就限制了这个账号使用shell的权利。因为有些账号是不需要使用shell的，分给它们会让系统陷入危险。</p>
 <p>Linux工作排调度的种类：at、cron。<br>at：是个可以处理仅执行一次就结束调度的命令，不过要执行at时，必须要有atd这个服务的支持才行。CentOS默认是启动的。(事实上，当我们使用at时会进入一个at shell的环境来让用户执行任务命令，ctrl+D结束、我们可以利用/etc/at.allow与/etc/at.deny这两个文件来进行at的使用限制)<br>cron：这个这个命令所完成的工作将会循环一直进行下去！crontab除了可以使用命令执行外，亦可编辑/etc/crontab来支持。而让crontab可以生效的服务是crond这个服务！(与at类似的使用限制，/etc/cron.allow优先级比/etc/cron.deny要高、crontab -e是针对用户的cron来设计的(会被记录到/var/spool/cron/)，如果是系统的例行性任务时，只需要编辑/etc/crontab这个文件就可以、/n(斜线)即是“每隔n单位间隔”的意思、cron执行的每一项工作都会被记录到/var/log/cron这个日志文件中)<br>基本上，cron这个服务的最低检测限制是”分钟”，所以cron会每分钟去读取一次/etc/crontab与/var/spool/cron里面的数据内容，因此，只要你编辑完/etc/crontab这个文件，并且将它保存之后，那么cron的设定就自动会来执行了！<br>anacron并不是用来取代crontab的，anacron存在的目的就在于我们上头提到的，处理非24小时一直启动的Linux系统的crontab的执行！anacron其实是一个程序并非一个服务！</p>
+<p>在Linux系统当中：触发任何一个事件时，系统都会将他定义成为一个进程，并且给予这个进程一个ID，称为PID，同时依据触发这个进程的用户与相关属性关系，给予这个PID一组有效的权限设置。从此以后，这个PID能够在系统上面进行的操作，就与这个PID的权限有关了！<br>每个进程都有一个PID，那某个进程的父进程该如何判断？就通过Parent PID(PPID)来判断即可。<br>常驻在内存当中的进程通常都是负责一些系统所提供的功能以服务用户各项任务，因此这些常驻进程就会被我们称为服务(daemon)。</p>
+<p>工作管理(job control)：这个工作管理(job control)是用在bash环境下的。在进行工作管理的行为中，其实每个工作都是目前bash的子进程。放入后台的工作是不可以使用ctrl+c来终止的，可使用bg/fg调用该工作。<br>在后台里面的工作状态又可分为暂停(stop)与运行中(running)。实际进行job控制的命令有哪些？1、直接将命令丢到后台中执行的&amp; 2、将目前的工作丢到后台中暂停ctrl+z，查看目前的后台工作状态:jobs 3、将后台的工作拿到前台来处理:fg %jobnumber 4、让工作在后台下的状态变成运行中:bg %jobnumber 5、管理后台当中的工作:kill -single %jobnumber(kill后面接的数字默认会是PID，若想管理bash下的工作，就得要加上%数字)<br>特别留意一下，-9这个signal通常是用在强制删除一个不正常的工作时所使用的，-15则是以正常步骤结束一项工作(15也是默认值)，两者之间并不相同！举例来说，我用vi的时候，不是会产生一个.filename.swp的文件吗？那么，当使用-15这个signal时，vi会尝试以正常的步骤来结束掉该vi的工作，所以.filename.swp会主动的被移除，但若是使用-9这个signal时，由于该vi工作会被强制移除掉，因此.filename.swp就会继续存在文件系统当中。</p>
+<p>如果你是以远程连线方式连接到你的Linux主机，并且将工作以&amp;的方式放到后台去，请问，在工作尚未结束的情况下你脱机了，该工作还会继续进行吗？答案是“否”！不会继续进行，而是会被中断掉！那怎么办？<br>nohup可以让你在脱机或注销系统后，还能够让工作继续进行。nohup并不支持bash内置的命令，因此你的命令必须要是外部命令才行。nohup与终端机其实无关了，故信息的输出就会被定向到nohup.out。(nohup [命令与参数] &lt;==在终端机前台中工作、nohup [命令与参数] &amp; &lt;==在终端机后台中工作) </p>
+<p>进程的查看：1、ps:将某个时间点的进程运行情况选取下来(进程树) 2、top:动态查看进程的变化(排序、k给某个PID一个信号、r给摸个PID一个nice值)<br>我们知道CPU一秒钟可以运作多达数G的微命令次数，通过内核的CPU调度可以让各进程被CPU所切换运行，因此每个进程在一秒钟内或多或少都会被CPU执行部分的脚本。(如果优先级较高则运行次数可以较多次)</p>
 	  
 	</div>
 
@@ -143,12 +147,12 @@
     
     
     <a href="/2018/03/10/Free-Software-Song/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+                class="fa fa-arrow-circle-o-left"></i> Anterior</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2018/03/03/Reading-Plan/" type="button" class="btn btn-default ">Next<i
+    <a href="/2018/03/03/Reading-Plan/" type="button" class="btn btn-default ">Próximo<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -161,7 +165,7 @@
 	<!-- comment -->
 	
 <section id="comment">
-    <h2 class="title">Comments</h2>
+    <h2 class="title">Comentários</h2>
 
     
 </section>
