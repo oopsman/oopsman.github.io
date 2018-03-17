@@ -113,6 +113,36 @@
 <div class="row">
 	<div class="col-md-8">
 		<h3 class="title">
+			<a href="/2016/06/13/requireJS/" >requireJS</a>
+		</h3>
+		</div>
+	<div class="col-md-4">
+		<div class="date">post @ 2016-06-13  </div>
+		</div>
+	</div>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>CommonJS规范不适用于浏览器环境，这对服务器端不是一个问题，因为所有的模块都存放在本地硬盘，可以同步加载完成，等待时间就是硬盘的读取时间。但是，对于浏览器，这却是一个大问题，因为模块都放在服务器端，等待时间取决于网速的快慢，可能要等很长时间，浏览器处于”假死”状态。<br>因此，浏览器端的模块，不能采用”同步加载”（synchronous），只能采用”异步加载”（asynchronous）。这就是AMD规范诞生的背景。AMD也采用require()语句加载模块，但是不同于CommonJS，它要求两个参数：require([module], callback);第一个参数[module]，是一个数组，里面的成员就是要加载的模块；第二个参数callback，则是加载成功之后的回调函数。<br>使用requireJS的优点有哪些？</p>
+<ol>
+<li>实现JS文件的异步加载，避免网页被堵塞。</li>
+<li>管理模块之间的依赖性，便于代码的编写和维护。<br>require.js要求，每个模块是一个单独的js文件。这样的话，如果加载多个模块，就会发出多次HTTP请求，会影响网页的加载速度。因此，require.js提供了一个优化工具，当模块部署完毕以后，可以用这个工具将多个模块合并在一个文件中，减少HTTP请求数。
+	
+	</div>
+  <a type="button" href="/2016/06/13/requireJS/#more" class="btn btn-default more">Read More</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->
+<div class="row">
+	<div class="col-md-8">
+		<h3 class="title">
 			<a href="/2016/06/12/JS之Code/" >JS之Code</a>
 		</h3>
 		</div>
@@ -379,33 +409,6 @@
 </div>
 
 		
-			
-	
-	<!-- display as entry -->
-<div class="row">
-	<div class="col-md-8">
-		<h3 class="title">
-			<a href="/2016/03/15/移动web/" >移动web</a>
-		</h3>
-		</div>
-	<div class="col-md-4">
-		<div class="date">post @ 2016-03-15  </div>
-		</div>
-	</div>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<p>在移动设备上进行网页的重构或开发，首先得搞明白的就是移动设备上的viewport了，只有明白了viewport的概念以及弄清楚了跟viewport有关的meta标签的使用，才能更好地让我们的网页适配或响应各种不同分辨率的移动设备。<br>
-	
-	</div>
-  <a type="button" href="/2016/03/15/移动web/#more" class="btn btn-default more">Read More</a>
-</div>
-
-		
 
 		</div>
 
@@ -484,6 +487,10 @@
   <ul class="entry list-unstyled">
     
       <li>
+        <a href="/2018/03/16/Feelings-of-IT-Movies/" ><i class="fa fa-file-o"></i>Feelings of IT Movies</a>
+      </li>
+    
+      <li>
         <a href="/2018/03/10/Free-Software-Song/" ><i class="fa fa-file-o"></i>Free Software Song</a>
       </li>
     
@@ -497,10 +504,6 @@
     
       <li>
         <a href="/2018/03/01/vultr的vps搬迁/" ><i class="fa fa-file-o"></i>vultr的vps搬迁</a>
-      </li>
-    
-      <li>
-        <a href="/2018/02/11/小院禅修记/" ><i class="fa fa-file-o"></i>小院禅修记</a>
       </li>
     
   </ul>
