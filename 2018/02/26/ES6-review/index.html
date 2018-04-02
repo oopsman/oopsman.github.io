@@ -264,6 +264,9 @@
 <li>模块之中，顶层的this关键字返回undefined，而不是指向window。也就是说，在模块顶层使用this关键字，是无意义的。利用顶层的this等于undefined这个语法点，可以侦测当前代码是否在ES6模块之中。</li>
 <li>JS引擎对脚本静态分析的时候，遇到模块加载命令import，就会生成一个只读引用(对它进行重新赋值会报错)。等到脚本真正执行时，再根据这个只读引用，到被加载的那个模块里面去取值。<code>换句话说，ES6的import有点像Unix系统的“符号连接”，原始值变了，import加载的值也会跟着变。</code> </li>
 <li>Node对ES6模块的处理比较麻烦，因为它有自己的CommonJS模块格式，与ES6模块格式是不兼容的。目前的解决方案是，将两者分开，ES6模块和CommonJS采用各自的加载方案。<code>Node要求ES6模块采用.mjs后缀文件名。</code>  Node的import命令是异步加载，这一点与浏览器的处理方法相同。 ES6模块应该是通用的，同一个模块不用修改，就可以用在浏览器环境和服务器环境。 </li>
+<li>ES6模块加载CommonJS模块：CommonJS模块的输出都定义在module.exports这个属性上面。Node的import命令加载CommonJS模块，Node会自动将module.exports属性，当作模块的默认输出，即等同于export default xxx。</li>
+<li>CommonJS模块加载ES6模块：CommonJS模块加载ES6模块，不能使用require命令，而要使用import()函数。ES6模块的所有输出接口，会成为输入对象的属性。 </li>
+<li>CommonJS模块的重要特性是加载时执行，即脚本代码在require的时候，就会全部执行。一旦出现某个模块被”循环加载”，就只输出已经执行的部分，还未执行的部分不会输出。ES6处理“循环加载”与CommonJS有本质的不同。ES6模块是动态引用，如果使用import从一个模块加载变量，那些变量不会被缓存，而是成为一个指向被加载模块的引用，需要开发者自己保证，真正取值的时候能够取到值。 </li>
 </ul>
 </script></li></ul>	  
 	</div>
@@ -275,12 +278,12 @@
     
     
     <a href="/2018/03/01/vultr的vps搬迁/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> 上一頁</a>
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2018/02/11/小院禅修记/" type="button" class="btn btn-default ">下一頁<i
+    <a href="/2018/02/11/小院禅修记/" type="button" class="btn btn-default ">Next<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -293,7 +296,7 @@
 	<!-- comment -->
 	
 <section id="comment">
-    <h2 class="title">留言</h2>
+    <h2 class="title">Comments</h2>
 
     
 </section>
