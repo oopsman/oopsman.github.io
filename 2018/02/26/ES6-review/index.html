@@ -243,6 +243,7 @@
 <li>虽然Generator函数将异步操作表示得很简洁，但是流程管理却不方便(即何时执行第一阶段、何时执行第二阶段)。co模块用于Generator函数的自动执行。co模块可以让你不用编写Generator函数的执行器。co函数返回一个Promise对象，因此可以用then方法添加回调函数。 </li>
 <li>ES2017标准引入了async函数，使得异步操作变得更加方便。async函数是什么?一句话，它就是Generator函数的语法糖。<code>进一步说，async函数完全可以看作多个异步操作，包装成的一个Promise对象，而await命令就是内部then命令的语法糖。</code></li>
 <li>async函数对Generator函数的改进，体现在以下四点。1、内置执行器。Generator函数的执行必须靠执行器，所以才有了co模块，而async函数自带执行器 2、更好的语义。async和await，比起星号和yield，语义更清楚了。async表示函数里有异步操作，await表示紧跟在后面的表达式需要等待结果 3、更广的适用性。async函数的await命令后面，可以是Promise对象和原始类型的值(数值、字符串和布尔值，但这时等同于同步操作) 4、返回值是Promise。</li>
+<li>async函数的实现原理，就是将Generator函数和自动执行器，包装在一个函数里。<code>async函数用法：</code>async函数返回一个Promise对象，可以使用then方法添加回调函数。当函数执行的时候，一旦遇到await就会先返回，等到异步操作完成，再接着执行函数体内后面的语句。 </li>
 <li><p>async函数有多种使用形式。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 函数声明</span></span><br><span class="line"><span class="keyword">async</span> <span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 函数表达式</span></span><br><span class="line"><span class="keyword">const</span> foo = <span class="keyword">async</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象的方法</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123; <span class="keyword">async</span> foo() &#123;&#125; &#125;;</span><br><span class="line">obj.foo().then(...)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Class 的方法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Storage</span> </span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>() &#123;</span><br><span class="line">    <span class="keyword">this</span>.cachePromise = caches.open(<span class="string">'avatars'</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">async</span> getAvatar(name) &#123;</span><br><span class="line">    <span class="keyword">const</span> cache = <span class="keyword">await</span> <span class="keyword">this</span>.cachePromise;</span><br><span class="line">    <span class="keyword">return</span> cache.match(<span class="string">`/avatars/<span class="subst">$&#123;name&#125;</span>.jpg`</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> storage = <span class="keyword">new</span> Storage();</span><br><span class="line">storage.getAvatar(<span class="string">'jake'</span>).then(…);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 箭头函数</span></span><br><span class="line"><span class="keyword">const</span> foo = <span class="keyword">async</span> () =&gt; &#123;&#125;;</span><br></pre></td></tr></table></figure>
 </li>
@@ -320,12 +321,12 @@
     
     
     <a href="/2018/03/01/vultr的vps搬迁/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> Anterior</a>
+                class="fa fa-arrow-circle-o-left"></i> 上一页</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2018/02/11/小院禅修记/" type="button" class="btn btn-default ">Próximo<i
+    <a href="/2018/02/11/小院禅修记/" type="button" class="btn btn-default ">下一页<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -338,7 +339,7 @@
 	<!-- comment -->
 	
 <section id="comment">
-    <h2 class="title">Comentários</h2>
+    <h2 class="title">留言</h2>
 
     
 </section>
