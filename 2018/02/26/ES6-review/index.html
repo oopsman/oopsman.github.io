@@ -225,7 +225,7 @@
 <ul>
 <li>承诺promise–(触发)–&gt;未来–(实现)–&gt;异步操作(异步操作代码)–(分离、回调)–&gt;回调函数(处理异步结果代码)  (同步方式写异步代码，解决回调地狱)   console.dir(Promise)  <code>充分利用Event Loop模型</code> 改变代码的执行顺序   </li>
 <li>Promise是异步编程的一种解决方案，它由社区最早提出和实现，ES6将其写进了语言标准，统一了用法，原生提供了Promise对象。ES6规定，Promise对象是一个构造函数，用来生成Promise实例。Promise构造函数接受一个函数作为参数，<code>该函数的两个参数分别是resolve和reject。它们是两个函数，由JavaScript引擎提供，不用自己部署。(源码中resolve/reject是异步操作，可理解为setTimeout，但是micotask类型)</code> Promise对象的状态改变，只有两种可能：从pending变为fulfilled和从pending变为rejected。</li>
-<li><code>resolve函数的作用是：</code>将Promise对象的状态从“未完成”变为“成功”(即从pending变为resolved)，<code>在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；``reject函数的作用是：</code>将Promise对象的状态从“未完成”变为“失败”(即从pending变为rejected)，在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数。 </li>
+<li><code>resolve函数的作用是：</code>将Promise对象的状态从“未完成”变为“成功”(即从pending变为resolved)，<code>在异步操作成功时调用，并将异步操作的结果，作为参数传递出去；reject函数的作用是：</code>将Promise对象的状态从“未完成”变为“失败”(即从pending变为rejected)，在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。Promise实例生成以后，可以用then方法分别指定resolved状态和rejected状态的回调函数。 </li>
 <li>Promise.prototype.then()：Promise实例具有then方法，也就是说，then方法是定义在原型对象Promise.prototype上的。可以用then方法分别指定resolved状态和rejected状态的回调函数。<code>then方法返回的是一个新的Promise实例(注意，不是原来那个Promise实例)。因此可以采用链式写法，即then方法后面再调用另一个then方法。</code> </li>
 <li>promise的then方法接受两个参数：promise.then(onFulfilled, onRejected) <code>1、调用时机：</code>实践中要确保onFulfilled和onRejected方法异步执行，且应该在then方法被调用的那一轮事件循环之后的新执行栈中执行  <code>2、调用要求：</code>onFulfilled和onRejected必须被作为函数调用(即没有this值) (<code>总之确保onFulfilled/onRejected异步执行</code>)<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//Promise新建后立即执行，所以首先输出的是Promise。然后，then方法指定的回调函数，将在当前脚本所有同步任务执行完才会执行，所以resolved最后输出。 </span></span><br><span class="line"><span class="keyword">let</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Promise'</span>);</span><br><span class="line">  resolve();</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'resolved.'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'Hi!'</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// Promise</span></span><br><span class="line"><span class="comment">// Hi!</span></span><br><span class="line"><span class="comment">// resolved</span></span><br></pre></td></tr></table></figure>
 </li>
@@ -324,12 +324,12 @@
     
     
     <a href="/2018/03/01/vultr的vps搬迁/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> Prev</a>
+                class="fa fa-arrow-circle-o-left"></i> Anterior</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2018/02/11/小院禅修记/" type="button" class="btn btn-default ">Next<i
+    <a href="/2018/02/11/小院禅修记/" type="button" class="btn btn-default ">Próximo<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -342,7 +342,7 @@
 	<!-- comment -->
 	
 <section id="comment">
-    <h2 class="title">Comments</h2>
+    <h2 class="title">Comentários</h2>
 
     
 </section>
