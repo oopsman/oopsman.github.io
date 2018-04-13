@@ -126,7 +126,7 @@
 <p>  bash可不只有环境变量，还有一些与bash操作接口有关的变量(PPID父进程ID、$当前shell的PID、?上次命令的结果)，以及用户自己定义的变量存在的。那么这些变量如何查看呢？这个时候就得要使用set这个命令了。<br>  问号也是一个特殊的变量，在bash里面这个变量很重要。一般来说，如果成功的运行该命令，则会回传一个0值，如果运行过程发生错误，就会回传”错误代码”才对！<br>  export：自定义变量转成环境变量，若环境变量转成自定义变量：declare +x 变量名<br>  变量的键盘读取：read，变量的声明declare(数组、整型、环境变量…)。变量类型默认为字符串。</p>
 <p>  命令查找的顺序，可通过type -a查询得到。查找顺序为：1、以相对/绝对路径执行命令，例如”/bin/ls”或”./ls” 2、由alias找到该命令来执行 3、由bash内建的(builtin)命令来执行 4、通过$PATH这个变量的顺序找到的第一个命令来执行。</p>
 <p>  你是否会觉得奇怪，怎么我们什么动作都没有进行，但是一进入bash就取得一堆有用的变量了？这是因为系统有一些环境配置文件的存在，让bash在启动时直接读取这些配置文件，以规划好bash的操作环境！而这些配置文件又可以分为全体系统的配置文件以及用户个人偏好配置文件。<br>  bash的配置文件主要分为login shell与non-login shell。login shell主要读取/etc/profile与~/.bash_profile，non-login shell则仅读取~/.bashrc。(由于/etc/profile和~/.bash_profile都是在取得login shell的时候才会读取的配置文件，所以如果你将自己的偏好设置写入上述文件后，通常都是得注销再登录后才能生效，若不想注销登录，则需要读入环境配置文件的命令source)</p>
-<p>  连续命令的执行可通过 ;、&amp;&amp;、||符号来处理。</p>
+<p>  数据重定向：1、标准输入(stdin),代码为0,使用&lt;或&lt;&lt;  2、标准输出(stdout),代码为1,使用&gt;或&gt;&gt;  3、标准错误输出(stderr),代码为2,使用2&gt;或2&gt;&gt; ( 默认为1、数字与符号之间无空格、覆盖是一个的，追加是两个的、/dev/null黑洞文件、stdout和stderr写入同一个文件语法&amp;&gt; )<br>  将stdout和stderr分别存到不同的文件中去：find /home -name .bashrc &gt; list_right 2&gt; list_error。standard input：将原本需要由键盘输入的数据，改由文件内容来取代。&lt;&lt;这个连续两个小于的符号他代表的是‘结束的输入字符’的意思！而不需要按下[ctrl]+d离开。(<code>利用cat命令来创建一个文件流程</code>)<br>  连续命令的执行可通过 ;、&amp;&amp;、||符号来处理。</p>
 <p>  我们Linux系统的服务(services)启动的接口，在/etc/init.d/这个目录下，目录下所有的文件都是shell script；另外包括开机(booting)过程也都是利用shell script来帮忙查找系统的相关设置数据，然后再代入各个服务的设置参数！<br>  shell script如何运行？1、直接命令执行(shell.sh文件必须要具备可读与可执行(rx)的权限) 2、以bash进程来执行(通过“bash shell.sh”或“sh shell.sh”来运行，此时你的shell.sh只要有r的权限即可被执行) 3、source或小数点<br>  上述执行方式的区别：1.利用直接执行的方式来执行script，使用这种执行方式时，其实script是在子进程的bash内执行的！ 2、利用source来执行脚本：在父进程中执行。 这也是为啥你不注销系统而要让某些写入~/.bashrc的配置生效时，需要使用”source ~/.bashrc”而不能使用”bash ~/.bashrc”。<br>  shell script利用exit n(n是数字)的功能，回传一个数值给系统，告知执行结果。<br>  判断符号中括号[]的使用方法与test几乎一模一样。只是中括号比较常用在条件判断式if…then…fi的情况中就是了。使用中括号需要注意：1、在中括号[]内的每个组件都需要有空格键来分隔 2、在中括号内的变量，最好都以双引号括号起来 3、在中括号内的常数，最好都以单或双引号括号起来。<br>  shell script的默认变量：$0, $1，$#..<br>  shell script的追踪和调试可通过bash命令的参数：-n:不执行script，仅检查是否有语法问题  2、-x : 将使用到的script打印出来。</p>
 <p>  文件如何判别它的所有者与用户组呢?其实就是利用UID与GID。每一个文件都会有所谓的所有者ID与用户组ID,当我们有要显示文件属性的需求时,系统会根据/etc/passwd与/etc/group的内容,找到UID/GID对应的账号与组名再显示出来。(转译过程)<br>  你输入账号密码后，系统帮你处理了什么呢？1、先找寻/etc/passwd里面是否有你输入的账号，如果没有则跳出，如果有的话则将该账号对应的UID与GID（在/etc/group中）读出来，另外，该账号的主文件夹与shell设置也一并读出。 2、再来则是核对密码表。Linux会进入/etc/shadow里面找出对应的账号与UID，然后核对一下你刚才输入的密码与里面的密码是否相符。 3、如果一切ok的话，就进入shell控管的阶段了。<br>  当UID是0时，代表这个账号是系统管理员！所以当你要让其他的账号名称也具有root的权限时，将该账号的UID改为0即可。这也就是说，一部系统上面的系统管理员不见得只有root！不过，不建议有多个账号的UID是0。 </p>
 <p>  刚刚我们讲到了，使用useradd建立了账号之后，在默认的情况下，该账号是暂时被封锁的，也就是说，该账号是无法登录的，你可以去瞧一瞧/etc/shadow内的第二个字段就知道了。那该如何是好？怕什么？直接给他设置新密码就好了！对吧～设置密码就使用passwd！(root可以帮忙设置各式各样的密码，系统几乎一定会接受!) </p>
@@ -174,12 +174,12 @@
     
     
     <a href="/2018/03/10/Free-Software-Song/" type="button" class="btn btn-default"><i
-                class="fa fa-arrow-circle-o-left"></i> Anterior</a>
+                class="fa fa-arrow-circle-o-left"></i> Prev</a>
     
 
     <a href="/" type="button" class="btn btn-default"><i class="fa fa-home"></i>Home</a>
     
-    <a href="/2018/03/03/Reading-Plan/" type="button" class="btn btn-default ">Próximo<i
+    <a href="/2018/03/03/Reading-Plan/" type="button" class="btn btn-default ">Next<i
                 class="fa fa-arrow-circle-o-right"></i></a>
     
 
@@ -192,7 +192,7 @@
 	<!-- comment -->
 	
 <section id="comment">
-    <h2 class="title">Comentários</h2>
+    <h2 class="title">Comments</h2>
 
     
 </section>
